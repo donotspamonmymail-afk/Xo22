@@ -25,7 +25,20 @@ import {
   CITIES_CONFIG,
   STATS_CONFIG,
   PRICING_CONFIG,
+  SERVICE_DETAIL_CONFIG,
+  BLOG_POSTS_CONFIG,
+  ABOUT_PAGE_CONFIG,
+  CONTACT_PAGE_CONFIG,
+  LEGAL_PAGES_CONFIG,
 } from "@shared/site-config";
+
+export {
+  SERVICE_DETAIL_CONFIG,
+  BLOG_POSTS_CONFIG,
+  ABOUT_PAGE_CONFIG,
+  CONTACT_PAGE_CONFIG,
+  LEGAL_PAGES_CONFIG,
+};
 
 export const SITE = {
   ...SITE_CONFIG,
@@ -140,8 +153,9 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Why Us", href: "#why-us" },
   { label: "FAQ", href: "#faq" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
 ] as const;
 
 export const HERO = {
@@ -150,7 +164,7 @@ export const HERO = {
   headingHighlight: "Done Right.",
   subheading:
     "India's trusted legal services platform for individuals and businesses. From online name change to company registration, GST filing to trademark protection \u2014 we handle the paperwork so you can focus on what matters.",
-  ctaPrimary: "Talk on WhatsApp",
+  ctaPrimary: "Get Free Consultation",
   ctaSecondary: "View Services",
   defaultWhatsAppMessage:
     "Hi, I need legal assistance. Please help me get started.",
@@ -165,7 +179,7 @@ export const CTA_BANNER = {
   heading: "Ready to Get Started?",
   subheading:
     "Get expert legal assistance today. Talk to our team on WhatsApp and get a free consultation on your legal needs.",
-  buttonText: "Start on WhatsApp",
+  buttonText: "Get Free Consultation",
   message:
     "Hi, I'd like a free consultation for my legal needs. Please help me get started.",
 } as const;

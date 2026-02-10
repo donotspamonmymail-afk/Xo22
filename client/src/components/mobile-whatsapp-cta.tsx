@@ -24,10 +24,10 @@ export function MobileWhatsAppCta() {
         rel="noopener noreferrer"
         className="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-primary-foreground font-semibold text-sm shadow-lg"
         data-testid="link-mobile-sticky-whatsapp"
-        aria-label="Chat on WhatsApp"
+        aria-label="Get Free Consultation on WhatsApp"
       >
         <MessageCircle className="w-4 h-4" />
-        Talk on WhatsApp
+        Get Free Consultation
       </a>
     </div>
   );

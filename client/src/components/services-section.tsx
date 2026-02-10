@@ -1,6 +1,7 @@
+import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 import { getServiceWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import { SERVICES } from "@/lib/site-data";
@@ -50,7 +51,9 @@ export function ServicesSection() {
                   <div className="flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 mb-4">
                     <service.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                  <Link href={`/services/${service.slug}`} data-testid={`link-service-title-${service.slug}`}>
+                    <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                  </Link>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     {service.description}
                   </p>
@@ -58,16 +61,24 @@ export function ServicesSection() {
                     <span className="text-sm font-medium">
                       Starting from <span className="text-primary font-bold">{"\u20B9"}{service.price}</span>
                     </span>
-                    <a
-                      href={getServiceWhatsAppLink(service.title, service.price)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" variant="outline" data-testid={`button-service-whatsapp-${service.slug}`}>
-                        <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
-                        Get on WhatsApp
-                      </Button>
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={getServiceWhatsAppLink(service.title, service.price)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button size="sm" variant="outline" data-testid={`button-service-whatsapp-${service.slug}`}>
+                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                          Get Quote
+                        </Button>
+                      </a>
+                      <Link href={`/services/${service.slug}`} data-testid={`link-service-learn-more-${service.slug}`}>
+                        <Button size="sm" variant="ghost">
+                          Learn More
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </CardContent>
               </Card>

@@ -78,7 +78,7 @@ export function generateJsonLdSchemas(): string {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: STATS_CONFIG.find((s) => s.key === "rating")?.value || "4.9",
-      reviewCount: STATS_CONFIG.find((s) => s.key === "cases")?.value.replace("+", "") || "500",
+      reviewCount: STATS_CONFIG.find((s) => s.key === "clients")?.value.replace("+", "") || "127",
       bestRating: "5",
       worstRating: "1",
     },

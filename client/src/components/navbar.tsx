@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { Sun, Moon, Menu, X, Scale, MessageCircle } from "lucide-react";
@@ -9,6 +10,7 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -16,13 +18,19 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      const offset = 80;
-      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+    if (href.startsWith("#")) {
+      if (location === "/") {
+        const el = document.querySelector(href);
+        if (el) {
+          const offset = 80;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      } else {
+        window.location.href = `/${href}`;
+      }
     }
   };
 
@@ -38,12 +46,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4 h-16">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+          <Link
+            href="/"
             className="flex items-center gap-2 flex-shrink-0"
             data-testid="link-home"
             aria-label={`${SITE.name} - Go to homepage`}
@@ -54,21 +58,34 @@ export function Navbar() {
             <span className="text-lg font-bold tracking-tight">
               Legal<span className="text-primary">Apex</span>
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <Button
-                key={link.href}
-                variant="ghost"
-                size="sm"
-                onClick={() => scrollTo(link.href)}
-                className="text-muted-foreground font-medium"
-                data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-              >
-                {link.label}
-              </Button>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link key={link.href} href={link.href}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground font-medium"
+                    data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                  >
+                    {link.label}
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  key={link.href}
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-muted-foreground font-medium"
+                  data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                >
+                  {link.label}
+                </Button>
+              )
+            )}
           </div>
 
           <div className="flex items-center gap-2">
@@ -91,7 +108,7 @@ export function Navbar() {
             >
               <Button data-testid="button-nav-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                WhatsApp Us
+                Free Consultation
               </Button>
             </a>
 
@@ -113,18 +130,31 @@ export function Navbar() {
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl" role="menu">
           <div className="px-4 py-3 space-y-1">
-            {NAV_LINKS.map((link) => (
-              <Button
-                key={link.href}
-                variant="ghost"
-                className="w-full justify-start text-muted-foreground font-medium"
-                onClick={() => scrollTo(link.href)}
-                data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-                role="menuitem"
-              >
-                {link.label}
-              </Button>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-muted-foreground font-medium"
+                    data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                    role="menuitem"
+                  >
+                    {link.label}
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  key={link.href}
+                  variant="ghost"
+                  className="w-full justify-start text-muted-foreground font-medium"
+                  onClick={() => handleNavClick(link.href)}
+                  data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                  role="menuitem"
+                >
+                  {link.label}
+                </Button>
+              )
+            )}
             <div className="pt-2">
               <a
                 href={getWhatsAppLink()}
@@ -135,7 +165,7 @@ export function Navbar() {
               >
                 <Button className="w-full" data-testid="button-mobile-whatsapp">
                   <MessageCircle className="w-4 h-4 mr-2" />
-                  Talk on WhatsApp
+                  Free Consultation
                 </Button>
               </a>
             </div>

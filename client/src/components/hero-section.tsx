@@ -12,7 +12,7 @@ const trustIcons: Record<string, typeof Shield> = {
 };
 
 const statIcons: Record<string, typeof Star> = {
-  cases: Briefcase,
+  clients: Briefcase,
   rating: Star,
   experts: Award,
   years: Clock,
