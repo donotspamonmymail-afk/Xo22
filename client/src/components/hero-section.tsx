@@ -1,8 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MessageCircle, ArrowDown, Shield, BadgeCheck, Globe } from "lucide-react";
+import { MessageCircle, ArrowDown, Shield, BadgeCheck, Globe, Star, Briefcase, Award, Clock } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
+import { HERO, STATS, SITE } from "@/lib/site-data";
+
+const trustIcons: Record<string, typeof Shield> = {
+  confidential: Shield,
+  verified: BadgeCheck,
+  "india-wide": Globe,
+};
+
+const statIcons: Record<string, typeof Star> = {
+  cases: Briefcase,
+  rating: Star,
+  experts: Award,
+  years: Clock,
+};
 
 export function HeroSection() {
   const scrollToServices = () => {
@@ -19,6 +33,7 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
       data-testid="section-hero"
+      aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3 dark:from-primary/10 dark:via-transparent dark:to-primary/5" />
@@ -34,19 +49,20 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
           >
             <Badge variant="secondary" className="mb-6 px-4 py-1.5 text-xs font-medium tracking-wide">
-              Trusted Legal Services Across India
+              {HERO.badge}
             </Badge>
           </motion.div>
 
           <motion.h1
+            id="hero-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6"
             data-testid="text-hero-heading"
           >
-            Simple. Legal.{" "}
-            <span className="text-primary">Done Right.</span>
+            {HERO.headingStart}{" "}
+            <span className="text-primary">{HERO.headingHighlight}</span>
           </motion.h1>
 
           <motion.p
@@ -56,25 +72,23 @@ export function HeroSection() {
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
             data-testid="text-hero-subheading"
           >
-            Expert legal assistance for individuals and businesses. 
-            From name changes to company registration &mdash; we handle the paperwork 
-            so you can focus on what matters.
+            {HERO.subheading}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
           >
             <a
-              href={getWhatsAppLink("Hi, I need legal assistance. Please help me get started.")}
+              href={getWhatsAppLink(HERO.defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button size="lg" data-testid="button-hero-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
-                Talk on WhatsApp
+                {HERO.ctaPrimary}
               </Button>
             </a>
             <Button
@@ -83,9 +97,32 @@ export function HeroSection() {
               onClick={scrollToServices}
               data-testid="button-hero-services"
             >
-              View Services
+              {HERO.ctaSecondary}
               <ArrowDown className="w-4 h-4 ml-2" />
             </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto mb-10"
+            data-testid="stats-bar"
+          >
+            {STATS.map((stat) => {
+              const Icon = statIcons[stat.key] || Star;
+              return (
+                <div
+                  key={stat.key}
+                  className="flex flex-col items-center gap-1 p-3 rounded-lg bg-card border border-border"
+                  data-testid={`stat-${stat.key}`}
+                >
+                  <Icon className="w-4 h-4 text-primary mb-1" />
+                  <span className="text-xl sm:text-2xl font-bold text-primary">{stat.value}</span>
+                  <span className="text-xs text-muted-foreground font-medium">{stat.label}</span>
+                </div>
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -94,24 +131,21 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap items-center justify-center gap-6 sm:gap-8"
           >
-            <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="badge-confidential">
-              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10">
-                <Shield className="w-4 h-4 text-primary" />
-              </div>
-              <span className="font-medium">100% Confidential</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="badge-verified">
-              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10">
-                <BadgeCheck className="w-4 h-4 text-primary" />
-              </div>
-              <span className="font-medium">Expert Verified</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="badge-india-wide">
-              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10">
-                <Globe className="w-4 h-4 text-primary" />
-              </div>
-              <span className="font-medium">India-wide Support</span>
-            </div>
+            {HERO.trustBadges.map((badge) => {
+              const Icon = trustIcons[badge.key] || Shield;
+              return (
+                <div
+                  key={badge.key}
+                  className="flex items-center gap-2 text-sm text-muted-foreground"
+                  data-testid={`badge-${badge.key}`}
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10">
+                    <Icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="font-medium">{badge.label}</span>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>

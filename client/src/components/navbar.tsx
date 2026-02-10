@@ -3,14 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { Sun, Moon, Menu, X, Scale, MessageCircle } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
-
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "FAQ", href: "#faq" },
-];
+import { SITE, NAV_LINKS } from "@/lib/site-data";
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -36,6 +29,7 @@ export function Navbar() {
   return (
     <nav
       data-testid="navbar"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border"
@@ -52,6 +46,7 @@ export function Navbar() {
             }}
             className="flex items-center gap-2 flex-shrink-0"
             data-testid="link-home"
+            aria-label={`${SITE.name} - Go to homepage`}
           >
             <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary">
               <Scale className="w-4 h-4 text-primary-foreground" />
@@ -62,7 +57,7 @@ export function Navbar() {
           </a>
 
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Button
                 key={link.href}
                 variant="ghost"
@@ -82,6 +77,7 @@ export function Navbar() {
               variant="ghost"
               onClick={toggleTheme}
               data-testid="button-theme-toggle"
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
               {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
@@ -105,6 +101,8 @@ export function Navbar() {
               className="md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               data-testid="button-mobile-menu"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
@@ -113,15 +111,16 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl" role="menu">
           <div className="px-4 py-3 space-y-1">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Button
                 key={link.href}
                 variant="ghost"
                 className="w-full justify-start text-muted-foreground font-medium"
                 onClick={() => scrollTo(link.href)}
                 data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                role="menuitem"
               >
                 {link.label}
               </Button>

@@ -2,6 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { injectSeo } from "./seo";
 
 const app = express();
 const httpServer = createServer(app);
@@ -73,6 +74,21 @@ app.use((req, res, next) => {
     }
 
     return res.status(status).json({ message });
+  });
+
+  app.use((_req: Request, res: Response, next: NextFunction) => {
+    const originalEnd = res.end.bind(res);
+    (res as any).end = function (chunk?: any, encoding?: any, cb?: any) {
+      if (
+        res.getHeader("content-type")?.toString().includes("text/html") &&
+        typeof chunk === "string" &&
+        chunk.includes("<!-- SEO_META_INJECTION -->")
+      ) {
+        chunk = injectSeo(chunk);
+      }
+      return originalEnd(chunk, encoding, cb);
+    };
+    next();
   });
 
   // importantly only setup vite in development and after

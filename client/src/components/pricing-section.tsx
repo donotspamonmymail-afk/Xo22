@@ -4,45 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { MessageCircle, Check } from "lucide-react";
 import { getPricingWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
-
-const plans = [
-  {
-    name: "Basic",
-    price: "999",
-    description: "Perfect for simple legal tasks with guided assistance.",
-    popular: false,
-    features: [
-      "Document checklist",
-      "Format guidance",
-      "WhatsApp support",
-      "3\u20135 day turnaround",
-    ],
-  },
-  {
-    name: "Standard",
-    price: "1,999",
-    description: "Ideal for individuals needing hands-on legal support.",
-    popular: true,
-    features: [
-      "Drafting + filing guidance",
-      "2 revisions included",
-      "Priority WhatsApp support",
-      "2\u20134 day turnaround",
-    ],
-  },
-  {
-    name: "Premium",
-    price: "2,999",
-    description: "For urgent matters requiring dedicated attention.",
-    popular: false,
-    features: [
-      "Fast-track handling",
-      "Dedicated case manager",
-      "4 revisions included",
-      "24\u201348 hour turnaround",
-    ],
-  },
-];
+import { PRICING_PLANS, PRICING_DISCLAIMER } from "@/lib/site-data";
 
 const containerVariants = {
   hidden: {},
@@ -60,17 +22,17 @@ const itemVariants = {
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 md:py-28 bg-muted/30" data-testid="section-pricing">
+    <section id="pricing" className="py-20 md:py-28 bg-muted/30" data-testid="section-pricing" aria-labelledby="pricing-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-sm font-semibold text-primary tracking-wide uppercase mb-3">
             Pricing
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-pricing-heading">
+          <h2 id="pricing-heading" className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-pricing-heading">
             Transparent Plans, No Surprises
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed">
-            Choose a plan that fits your needs. All plans include expert support 
+            Choose a plan that fits your needs. All plans include expert support
             and a dedicated point of contact via WhatsApp.
           </p>
         </div>
@@ -82,7 +44,7 @@ export function PricingSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 max-w-5xl mx-auto"
         >
-          {plans.map((plan) => (
+          {PRICING_PLANS.map((plan) => (
             <motion.div key={plan.name} variants={itemVariants}>
               <Card
                 className={`h-full relative ${plan.popular ? "border-primary border-2" : ""}`}
@@ -111,7 +73,7 @@ export function PricingSection() {
                     ))}
                   </ul>
                   <a
-                    href={getPricingWhatsAppLink(plan.name)}
+                    href={getPricingWhatsAppLink(plan.name, plan.price)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block"
@@ -139,8 +101,7 @@ export function PricingSection() {
           className="text-center text-xs text-muted-foreground mt-8 max-w-lg mx-auto"
           data-testid="text-pricing-disclaimer"
         >
-          Government fees, stamp duty, notary, and courier charges are extra. 
-          Final pricing is confirmed after reviewing your specific requirements.
+          {PRICING_DISCLAIMER}
         </motion.p>
       </div>
     </section>
