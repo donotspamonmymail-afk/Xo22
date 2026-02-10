@@ -76,7 +76,8 @@ app.use((req, res, next) => {
     return res.status(status).json({ message });
   });
 
-  app.use((_req: Request, res: Response, next: NextFunction) => {
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    const requestPath = req.path;
     const originalEnd = res.end.bind(res);
     (res as any).end = function (chunk?: any, encoding?: any, cb?: any) {
       if (
@@ -84,7 +85,7 @@ app.use((req, res, next) => {
         typeof chunk === "string" &&
         chunk.includes("<!-- SEO_META_INJECTION -->")
       ) {
-        chunk = injectSeo(chunk);
+        chunk = injectSeo(chunk, requestPath);
       }
       return originalEnd(chunk, encoding, cb);
     };
