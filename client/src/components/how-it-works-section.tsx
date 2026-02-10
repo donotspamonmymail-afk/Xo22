@@ -1,0 +1,94 @@
+import { Search, Send, ClipboardCheck, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
+
+const steps = [
+  {
+    number: "01",
+    title: "Choose a Service",
+    description: "Browse our services and pick the one that fits your need. Not sure? Just ask us on WhatsApp.",
+    icon: Search,
+  },
+  {
+    number: "02",
+    title: "Share Documents",
+    description: "Send your documents securely on WhatsApp. We'll tell you exactly what's needed.",
+    icon: Send,
+  },
+  {
+    number: "03",
+    title: "Expert Reviews",
+    description: "Our verified legal expert reviews your case and confirms the exact price \u2014 no hidden charges.",
+    icon: ClipboardCheck,
+  },
+  {
+    number: "04",
+    title: "Work Starts",
+    description: "Once confirmed, your work begins immediately. Track progress via WhatsApp updates.",
+    icon: Rocket,
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+};
+
+export function HowItWorksSection() {
+  return (
+    <section id="how-it-works" className="py-20 md:py-28" data-testid="section-how-it-works">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <p className="text-sm font-semibold text-primary tracking-wide uppercase mb-3">
+            How It Works
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-how-heading">
+            Four Simple Steps
+          </h2>
+          <p className="text-muted-foreground text-base leading-relaxed">
+            Getting legal help shouldn't be complicated. Here's how easy it is to work with us.
+          </p>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+        >
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              variants={itemVariants}
+              className="relative text-center"
+              data-testid={`step-${step.number}`}
+            >
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] border-t-2 border-dashed border-border" />
+              )}
+              <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-5">
+                <step.icon className="w-7 h-7 text-primary" />
+                <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                  <span className="text-[10px] font-bold text-primary-foreground">{step.number}</span>
+                </div>
+              </div>
+              <h3 className="text-base font-semibold mb-2">{step.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
