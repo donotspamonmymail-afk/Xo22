@@ -64,21 +64,21 @@ export default function ServiceDetail() {
         <div
           className="relative py-16 md:py-24"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 30% 50%, rgba(47,68,160,0.20), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 30% 50%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-1.5 text-sm flex-wrap" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <ol className="flex items-center gap-1.5 text-sm flex-wrap" style={{ color: "var(--hero-text-faint)" }}>
                 <li>
                   <Link href="/" className="hover:text-white transition-colors" data-testid="link-breadcrumb-home">
                     Home
@@ -110,7 +110,7 @@ export default function ServiceDetail() {
                 <div
                   className="flex items-center justify-center w-12 h-12 rounded-lg mb-5"
                   style={{
-                    background: "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                    background: "var(--gradient-blue)",
                   }}
                 >
                   <ServiceIcon className="w-6 h-6 text-white" />
@@ -124,7 +124,7 @@ export default function ServiceDetail() {
               </h1>
               <p
                 className="text-base sm:text-lg leading-relaxed mb-6"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "var(--hero-text-muted)" }}
                 data-testid="text-service-hero-description"
               >
                 {detail.heroDescription}
@@ -134,9 +134,9 @@ export default function ServiceDetail() {
                   <span className="text-2xl font-bold text-white" data-testid="text-service-price">
                     {"\u20B9"}{serviceConfig.price}
                   </span>
-                  <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>onwards</span>
+                  <span className="text-sm" style={{ color: "var(--hero-text-dim)" }}>onwards</span>
                 </div>
-                <Badge className="text-xs" style={{ backgroundColor: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)" }}>
+                <Badge className="text-xs" style={{ backgroundColor: "var(--hero-badge-bg)", borderColor: "var(--hero-badge-border)", color: "var(--hero-badge-text)" }}>
                   <Clock className="w-3 h-3 mr-1" />
                   {detail.timeline}
                 </Badge>
@@ -166,12 +166,12 @@ export default function ServiceDetail() {
                         <div
                           className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5"
                           style={{
-                            backgroundColor: "rgba(45,153,104,0.1)",
+                            backgroundColor: "var(--green-bg)",
                           }}
                         >
                           <Check
                             className="w-3 h-3"
-                            style={{ color: "#2d9968" }}
+                            style={{ color: "var(--green)" }}
                           />
                         </div>
                         <span
@@ -228,8 +228,7 @@ export default function ServiceDetail() {
                           <div
                             className="flex items-center justify-center w-8 h-8 rounded-full flex-shrink-0 text-xs font-bold text-white"
                             style={{
-                              background:
-                                "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                              background: "var(--gradient-blue)",
                             }}
                           >
                             {i + 1}
@@ -358,11 +357,11 @@ export default function ServiceDetail() {
                     </div>
                     <ul className="space-y-2.5 mb-5">
                       <li className="flex items-center gap-2 text-sm">
-                        <Check className="w-4 h-4" style={{ color: "#2d9968" }} />
+                        <Check className="w-4 h-4" style={{ color: "var(--green)" }} />
                         Expert legal assistance
                       </li>
                       <li className="flex items-center gap-2 text-sm">
-                        <Check className="w-4 h-4" style={{ color: "#2d9968" }} />
+                        <Check className="w-4 h-4" style={{ color: "var(--green)" }} />
                         Complete document handling
                       </li>
                       <li className="flex items-center gap-2 text-sm">
@@ -370,7 +369,7 @@ export default function ServiceDetail() {
                         {detail.timeline}
                       </li>
                       <li className="flex items-center gap-2 text-sm">
-                        <Shield className="w-4 h-4" style={{ color: "#d4a434" }} />
+                        <Shield className="w-4 h-4" style={{ color: "var(--gold)" }} />
                         Money-back guarantee
                       </li>
                     </ul>
@@ -410,27 +409,27 @@ export default function ServiceDetail() {
                     <div className="flex items-center gap-3 mb-3">
                       <div
                         className="flex items-center justify-center w-8 h-8 rounded-full"
-                        style={{ backgroundColor: "rgba(47,68,160,0.08)" }}
+                        style={{ backgroundColor: "var(--blue-bg)" }}
                       >
-                        <Shield className="w-4 h-4" style={{ color: "#2f44a0" }} />
+                        <Shield className="w-4 h-4" style={{ color: "var(--blue)" }} />
                       </div>
                       <h4 className="text-sm font-semibold">Our Guarantee</h4>
                     </div>
                     <ul className="space-y-2 text-xs text-muted-foreground">
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
                         7-day money-back guarantee
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
                         100% confidential handling
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
                         Verified legal professionals
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
                         Dedicated support via WhatsApp
                       </li>
                     </ul>

@@ -62,7 +62,7 @@ export function Navbar() {
               <Scale className="w-4 h-4 text-white" />
             </div>
             <span className={`text-lg font-bold tracking-[-0.02em] ${showDarkNav ? "text-white" : ""}`}>
-              Legal<span className={showDarkNav ? "text-[hsl(36,80%,60%)]" : "text-primary"}>Apex</span>
+              Legal<span className={showDarkNav ? "" : "text-primary"} style={showDarkNav ? { color: "var(--gold)" } : undefined}>Apex</span>
             </span>
           </Link>
 
@@ -113,7 +113,7 @@ export function Navbar() {
               className="hidden sm:inline-flex"
               data-testid="link-nav-whatsapp"
             >
-              <Button className={showDarkNav ? "text-white" : ""} style={showDarkNav ? { backgroundColor: "#d4a434", borderColor: "#b88d2a" } : undefined} data-testid="button-nav-whatsapp">
+              <Button className={showDarkNav ? "text-white" : ""} style={showDarkNav ? { backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" } : undefined} data-testid="button-nav-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Free Consultation
               </Button>

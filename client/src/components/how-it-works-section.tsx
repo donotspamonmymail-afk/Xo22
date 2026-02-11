@@ -28,7 +28,7 @@ export function HowItWorksSection() {
               <div className="flex-shrink-0">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #2f44a0, #4a62c4)" }}
+                  style={{ background: "var(--gradient-blue)" }}
                 >
                   <span className="text-sm font-bold text-white">{step.number}</span>
                 </div>
@@ -65,7 +65,7 @@ export function HowItWorksSection() {
               )}
               <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/5 mb-5 border border-primary/10">
                 <step.icon className="w-8 h-8 text-primary" />
-                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #2f44a0, #4a62c4)", boxShadow: "0 4px 12px rgba(47,68,160,0.3)" }}>
+                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center shadow-md" style={{ background: "var(--gradient-blue)" }}>
                   <span className="text-xs font-bold text-white">{step.number}</span>
                 </div>
               </div>

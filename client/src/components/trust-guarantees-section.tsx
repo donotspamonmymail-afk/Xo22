@@ -35,11 +35,11 @@ export function TrustGuaranteesSection() {
                 <div
                   className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full mb-2 sm:mb-4"
                   style={{
-                    backgroundColor: "rgba(47,68,160,0.08)",
-                    border: "1px solid rgba(47,68,160,0.12)",
+                    backgroundColor: "var(--blue-bg)",
+                    border: "1px solid var(--blue-border)",
                   }}
                 >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "#2f44a0" }} />
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "var(--blue)" }} />
                 </div>
                 <h3
                   className="text-xs sm:text-sm font-semibold mb-0.5 sm:mb-1"

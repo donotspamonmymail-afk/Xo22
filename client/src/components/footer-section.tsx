@@ -37,7 +37,7 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="border-t border-border text-white" style={{ backgroundColor: "#0d1020" }} data-testid="section-footer" role="contentinfo">
+    <footer className="border-t border-border text-white" style={{ backgroundColor: "var(--hero-bg)" }} data-testid="section-footer" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
         <div className="sm:hidden">
           <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-home" aria-label={`${SITE.name} - Go to homepage`}>
@@ -45,7 +45,7 @@ export function FooterSection() {
               <Scale className="w-4 h-4 text-white" />
             </div>
             <span className="text-lg font-bold tracking-[-0.02em] text-white">
-              Legal<span className="text-[hsl(36,80%,60%)]">Apex</span>
+              Legal<span style={{ color: "var(--gold)" }}>Apex</span>
             </span>
           </Link>
           <p className="text-xs text-white/50 leading-relaxed mb-5">
@@ -111,7 +111,7 @@ export function FooterSection() {
                 <Scale className="w-4 h-4 text-white" />
               </div>
               <span className="text-lg font-bold tracking-[-0.02em] text-white">
-                Legal<span className="text-[hsl(36,80%,60%)]">Apex</span>
+                Legal<span style={{ color: "var(--gold)" }}>Apex</span>
               </span>
             </Link>
             <p className="text-sm text-white/50 leading-relaxed mb-4 max-w-xs">

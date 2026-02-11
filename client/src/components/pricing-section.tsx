@@ -32,31 +32,31 @@ export function PricingSection() {
                   <div
                     className="relative rounded-xl overflow-visible p-[1px]"
                     style={{
-                      background: "linear-gradient(135deg, #2f44a0, #1e2d6e)",
-                      boxShadow: "0 8px 24px -4px rgba(47,68,160,0.25)"
+                      background: "var(--pricing-popular-border)",
+                      boxShadow: "var(--pricing-popular-shadow-sm)"
                     }}
                     data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="px-3 py-0.5 text-[10px] text-white" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a" }}>Most Popular</Badge>
+                      <Badge className="px-3 py-0.5 text-[10px] text-white" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" }}>Most Popular</Badge>
                     </div>
-                    <div className="rounded-xl p-5 flex flex-col h-full" style={{ background: "linear-gradient(135deg, rgba(47,68,160,0.97), #1a2556)" }}>
+                    <div className="rounded-xl p-5 flex flex-col h-full" style={{ background: "var(--pricing-popular-bg)" }}>
                       <h3 className="text-base font-semibold mb-1 text-white">{plan.name}</h3>
-                      <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.6)" }}>{plan.description}</p>
+                      <p className="text-xs mb-3" style={{ color: "var(--hero-text-muted)" }}>{plan.description}</p>
                       <div className="mb-4">
                         <span className="text-3xl font-bold text-white">{"\u20B9"}{plan.price}</span>
-                        <span className="text-xs ml-1" style={{ color: "rgba(255,255,255,0.5)" }}>+ onwards</span>
+                        <span className="text-xs ml-1" style={{ color: "var(--hero-text-faint)" }}>+ onwards</span>
                       </div>
                       <ul className="space-y-2 mb-4 flex-1">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>
-                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "#d4a434" }} />
+                          <li key={feature} className="flex items-start gap-2 text-xs" style={{ color: "var(--hero-badge-text)" }}>
+                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
                       <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
-                        <Button className="w-full" size="sm" style={{ backgroundColor: "#ffffff", color: "#2f44a0" }} data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
+                        <Button className="w-full" size="sm" style={{ backgroundColor: "#ffffff", color: "var(--blue)" }} data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
                           <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
                           Get Started
                         </Button>
@@ -109,29 +109,29 @@ export function PricingSection() {
                 <div
                   className="relative rounded-xl overflow-visible p-[1px]"
                   style={{
-                    background: "linear-gradient(135deg, #2f44a0, #1e2d6e)",
-                    boxShadow: "0 16px 40px -8px rgba(47,68,160,0.25)"
+                    background: "var(--pricing-popular-border)",
+                    boxShadow: "var(--pricing-popular-shadow)"
                   }}
                   data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                 >
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <Badge className="px-4 py-1 text-xs text-white" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a" }}>Most Popular</Badge>
+                    <Badge className="px-4 py-1 text-xs text-white" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" }}>Most Popular</Badge>
                   </div>
                   <div
                     className="rounded-xl p-6 flex flex-col h-full"
-                    style={{ background: "linear-gradient(135deg, rgba(47,68,160,0.97), #1a2556)" }}
+                    style={{ background: "var(--pricing-popular-bg)" }}
                   >
                     <h3 className="text-lg font-semibold mb-1 text-white">{plan.name}</h3>
-                    <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.6)" }}>{plan.description}</p>
+                    <p className="text-sm mb-4" style={{ color: "var(--hero-text-muted)" }}>{plan.description}</p>
                     <div className="mb-6">
                       <span className="text-4xl font-bold text-white">{"\u20B9"}{plan.price}</span>
-                      <span className="text-sm ml-1" style={{ color: "rgba(255,255,255,0.5)" }}>+ onwards</span>
+                      <span className="text-sm ml-1" style={{ color: "var(--hero-text-faint)" }}>+ onwards</span>
                     </div>
                     <ul className="space-y-3 mb-6 flex-1">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(255,255,255,0.8)" }}>
-                          <div className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: "rgba(255,255,255,0.15)" }}>
-                            <Check className="w-3 h-3" style={{ color: "#d4a434" }} />
+                        <li key={feature} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--hero-badge-text)" }}>
+                          <div className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: "var(--hero-glass)" }}>
+                            <Check className="w-3 h-3" style={{ color: "var(--gold)" }} />
                           </div>
                           <span>{feature}</span>
                         </li>
@@ -145,7 +145,7 @@ export function PricingSection() {
                     >
                       <Button
                         className="w-full"
-                        style={{ backgroundColor: "#ffffff", color: "#2f44a0", borderColor: "rgba(255,255,255,0.8)" }}
+                        style={{ backgroundColor: "#ffffff", color: "var(--blue)", borderColor: "rgba(255,255,255,0.8)" }}
                         data-testid={`button-pricing-${plan.name.toLowerCase()}`}
                       >
                         <MessageCircle className="w-4 h-4 mr-2" />

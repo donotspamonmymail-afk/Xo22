@@ -8,12 +8,12 @@ import { staggerContainer, fadeUpItem } from "@/lib/motion";
 import { SERVICES } from "@/lib/site-data";
 
 const ACCENT_GRADIENTS = [
-  "linear-gradient(135deg, #2f44a0, #4a62c4)",
-  "linear-gradient(135deg, #d4a434, #e8c46a)",
-  "linear-gradient(135deg, #2a8db5, #4ab0d4)",
-  "linear-gradient(135deg, #2d9968, #48b882)",
-  "linear-gradient(135deg, #7c47b3, #9a6bcc)",
-  "linear-gradient(135deg, #2f44a0, #d4a434)",
+  "var(--gradient-blue)",
+  "var(--gradient-gold)",
+  "var(--gradient-teal)",
+  "var(--gradient-green)",
+  "var(--gradient-purple)",
+  "var(--gradient-blue-gold)",
 ];
 
 export function ServicesSection() {

@@ -60,16 +60,16 @@ export default function Contact() {
         <div
           className="relative py-20 md:py-28"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(47,68,160,0.20), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ export default function Contact() {
               </h1>
               <p
                 className="text-base sm:text-lg leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "var(--hero-text-muted)" }}
                 data-testid="text-contact-hero-description"
               >
                 {config.heroDescription}
@@ -122,13 +122,13 @@ export default function Contact() {
                       <div
                         className="flex items-center justify-center w-14 h-14 rounded-full mx-auto mb-4"
                         style={{
-                          backgroundColor: "rgba(45,153,104,0.1)",
-                          border: "1px solid rgba(45,153,104,0.2)",
+                          backgroundColor: "var(--green-bg)",
+                          border: "1px solid var(--green-border)",
                         }}
                       >
                         <MessageCircle
                           className="w-6 h-6"
-                          style={{ color: "#2d9968" }}
+                          style={{ color: "var(--green)" }}
                         />
                       </div>
                       <h3 className="text-lg font-semibold mb-2">
@@ -304,7 +304,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, #25D366, #128C7E)",
+                        background: "var(--gradient-whatsapp)",
                       }}
                     >
                       <MessageCircle className="w-5 h-5 text-white" />
@@ -339,7 +339,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                        background: "var(--gradient-blue)",
                       }}
                     >
                       <Mail className="w-5 h-5 text-white" />
@@ -377,7 +377,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, #d4a434, #e8c46a)",
+                        background: "var(--gradient-gold)",
                       }}
                     >
                       <Phone className="w-5 h-5 text-white" />
@@ -408,7 +408,7 @@ export default function Contact() {
                   <CardContent className="p-4">
                     <Clock
                       className="w-4 h-4 mb-2"
-                      style={{ color: "#2f44a0" }}
+                      style={{ color: "var(--blue)" }}
                     />
                     <p
                       className="text-xs font-semibold mb-0.5"
@@ -428,7 +428,7 @@ export default function Contact() {
                   <CardContent className="p-4">
                     <Zap
                       className="w-4 h-4 mb-2"
-                      style={{ color: "#d4a434" }}
+                      style={{ color: "var(--gold)" }}
                     />
                     <p
                       className="text-xs font-semibold mb-0.5"

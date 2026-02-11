@@ -47,16 +47,16 @@ export default function BlogPost() {
         <div
           className="relative py-16 md:py-24"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(47,68,160,0.15), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +67,7 @@ export default function BlogPost() {
             >
               <nav
                 className="flex items-center gap-1.5 text-sm mb-6 flex-wrap"
-                style={{ color: "rgba(255,255,255,0.5)" }}
+                style={{ color: "var(--hero-text-faint)" }}
                 aria-label="Breadcrumb"
                 data-testid="nav-breadcrumb"
               >
@@ -99,9 +99,9 @@ export default function BlogPost() {
                 <Badge
                   className="mb-4 text-xs"
                   style={{
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                    borderColor: "rgba(255,255,255,0.15)",
-                    color: "rgba(255,255,255,0.8)",
+                    backgroundColor: "var(--hero-badge-bg)",
+                    borderColor: "var(--hero-badge-border)",
+                    color: "var(--hero-badge-text)",
                   }}
                   data-testid="badge-post-category"
                 >
@@ -115,7 +115,7 @@ export default function BlogPost() {
                 </h1>
                 <div
                   className="flex items-center gap-4 text-sm flex-wrap"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "var(--hero-text-faint)" }}
                 >
                   <span
                     className="flex items-center gap-1"
@@ -188,8 +188,7 @@ export default function BlogPost() {
                       <div
                         className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                         style={{
-                          background:
-                            "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                          background: "var(--gradient-blue)",
                         }}
                       >
                         <Shield className="w-5 h-5 text-white" />
@@ -213,14 +212,14 @@ export default function BlogPost() {
                           <li className="flex items-center gap-1">
                             <Check
                               className="w-3 h-3"
-                              style={{ color: "#2d9968" }}
+                              style={{ color: "var(--green)" }}
                             />
                             Money-back guarantee
                           </li>
                           <li className="flex items-center gap-1">
                             <Check
                               className="w-3 h-3"
-                              style={{ color: "#2d9968" }}
+                              style={{ color: "var(--green)" }}
                             />
                             Verified experts
                           </li>

@@ -32,14 +32,14 @@ export function HeroSection() {
     <section
       id="hero"
       className="relative overflow-hidden"
-      style={{ backgroundColor: "#0d1020" }}
+      style={{ backgroundColor: "var(--hero-bg)" }}
       data-testid="section-hero"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(47,68,160,0.30), transparent 70%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 40% 60% at 80% 60%, rgba(210,155,40,0.10), transparent 60%)" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 50% 40% at 10% 80%, rgba(47,68,160,0.15), transparent 60%)" }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 60% 50% at 50% 0%, var(--hero-glow-primary), transparent 70%)` }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 40% 60% at 80% 60%, var(--hero-glow-accent), transparent 60%)` }} />
+        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 50% 40% at 10% 80%, var(--hero-glow-primary), transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
 
@@ -50,7 +50,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase bg-white/10 border-white/20 text-white/90">
+            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase" style={{ backgroundColor: "var(--hero-badge-bg)", borderColor: "var(--hero-badge-border)", color: "var(--hero-badge-text)" }}>
               {HERO.badge}
             </Badge>
           </motion.div>
@@ -64,14 +64,15 @@ export function HeroSection() {
             data-testid="text-hero-heading"
           >
             {HERO.headingStart}{" "}
-            <span style={{ background: "linear-gradient(to right, #d4a434, #e8c46a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{HERO.headingHighlight}</span>
+            <span style={{ background: `linear-gradient(to right, var(--gold), var(--gold-light))`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{HERO.headingHighlight}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed"
+            className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed"
+            style={{ color: "var(--hero-text-muted)" }}
             data-testid="text-hero-subheading"
           >
             {HERO.subheading}
@@ -89,7 +90,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >
-              <Button size="lg" className="w-full sm:w-auto" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a", color: "#fff" }} data-testid="button-hero-whatsapp">
+              <Button size="lg" className="w-full sm:w-auto" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)", color: "#fff" }} data-testid="button-hero-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 {HERO.ctaPrimary}
               </Button>
@@ -99,7 +100,7 @@ export function HeroSection() {
               variant="outline"
               onClick={scrollToServices}
               className="text-white w-full sm:w-auto"
-              style={{ backgroundColor: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.2)" }}
+              style={{ backgroundColor: "var(--hero-glass)", borderColor: "var(--hero-glass-border)" }}
               data-testid="button-hero-services"
             >
               {HERO.ctaSecondary}
@@ -120,12 +121,12 @@ export function HeroSection() {
                 <div
                   key={stat.key}
                   className="flex flex-col items-center gap-1 p-2 sm:p-4 rounded-md"
-                  style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{ backgroundColor: "var(--hero-glass)", border: "1px solid var(--hero-glass-border)" }}
                   data-testid={`stat-${stat.key}`}
                 >
-                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block" style={{ color: "#d4a434" }} />
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block" style={{ color: "var(--gold)" }} />
                   <span className="text-lg sm:text-3xl font-extrabold tracking-tight text-white">{stat.value}</span>
-                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>{stat.label}</span>
+                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider" style={{ color: "var(--hero-text-faint)" }}>{stat.label}</span>
                 </div>
               );
             })}
@@ -143,11 +144,11 @@ export function HeroSection() {
                 <div
                   key={badge.key}
                   className="flex items-center gap-2 text-xs sm:text-sm"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
+                  style={{ color: "var(--hero-text-faint)" }}
                   data-testid={`badge-${badge.key}`}
                 >
-                  <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: "#d4a434" }} />
+                  <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md" style={{ backgroundColor: "var(--hero-glass)" }}>
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: "var(--gold)" }} />
                   </div>
                   <span className="font-medium">{badge.label}</span>
                 </div>

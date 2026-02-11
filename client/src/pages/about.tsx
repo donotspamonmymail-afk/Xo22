@@ -28,10 +28,10 @@ import {
 
 const valueIcons = [Eye, Target, ShieldCheck, Heart];
 const VALUE_GRADIENTS = [
-  "linear-gradient(135deg, #2f44a0, #4a62c4)",
-  "linear-gradient(135deg, #d4a434, #e8c46a)",
-  "linear-gradient(135deg, #2a8db5, #4ab0d4)",
-  "linear-gradient(135deg, #2d9968, #48b882)",
+  "var(--gradient-blue)",
+  "var(--gradient-gold)",
+  "var(--gradient-teal)",
+  "var(--gradient-green)",
 ];
 
 const statIcons = [Briefcase, Star, Award, Clock];
@@ -51,16 +51,16 @@ export default function About() {
         <div
           className="relative py-20 md:py-28"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 70% 50%, rgba(47,68,160,0.20), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 70% 50%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,9 +74,9 @@ export default function About() {
               <Badge
                 className="mb-5 px-3 py-1 text-xs"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderColor: "rgba(255,255,255,0.15)",
-                  color: "rgba(255,255,255,0.8)",
+                  backgroundColor: "var(--hero-badge-bg)",
+                  borderColor: "var(--hero-badge-border)",
+                  color: "var(--hero-badge-text)",
                 }}
               >
                 About LegalApex
@@ -89,7 +89,7 @@ export default function About() {
               </h1>
               <p
                 className="text-base sm:text-lg leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "var(--hero-text-muted)" }}
                 data-testid="text-about-hero-description"
               >
                 {config.heroDescription}
@@ -112,7 +112,7 @@ export default function About() {
                 <motion.div key={stat.key} variants={fadeUpItem}>
                   <Card data-testid={`card-stat-${stat.key}`}>
                     <CardContent className="p-5 text-center">
-                      <Icon className="w-5 h-5 mx-auto mb-2" style={{ color: "#2f44a0" }} />
+                      <Icon className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--blue)" }} />
                       <p className="text-2xl sm:text-3xl font-bold mb-0.5">
                         {stat.value}
                       </p>
@@ -159,7 +159,7 @@ export default function About() {
                   <div
                     className="flex items-center justify-center w-10 h-10 rounded-lg mb-4"
                     style={{
-                      background: "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                      background: "var(--gradient-blue)",
                     }}
                   >
                     <Users className="w-5 h-5 text-white" />
@@ -221,8 +221,7 @@ export default function About() {
                         <div
                           className="flex items-center justify-center w-10 h-10 rounded-lg mb-4"
                           style={{
-                            background:
-                              VALUE_GRADIENTS[i % VALUE_GRADIENTS.length],
+                            background: VALUE_GRADIENTS[i % VALUE_GRADIENTS.length],
                           }}
                         >
                           <Icon className="w-5 h-5 text-white" />
@@ -269,10 +268,10 @@ export default function About() {
                           className="w-3.5 h-3.5"
                           style={{
                             fill:
-                              i < testimonial.rating ? "#d4a434" : "transparent",
+                              i < testimonial.rating ? "var(--gold)" : "transparent",
                             color:
                               i < testimonial.rating
-                                ? "#d4a434"
+                                ? "var(--gold)"
                                 : "hsl(var(--muted-foreground))",
                           }}
                         />
@@ -281,7 +280,7 @@ export default function About() {
                     <div className="relative mb-3">
                       <Quote
                         className="absolute -top-0.5 -left-0.5 w-5 h-5 opacity-10"
-                        style={{ color: "#2f44a0" }}
+                        style={{ color: "var(--blue)" }}
                       />
                       <p className="text-sm leading-relaxed pl-4 line-clamp-3">
                         {testimonial.text}
@@ -315,9 +314,9 @@ export default function About() {
             <div
               className="rounded-xl p-8 md:p-12 text-center"
               style={{
-                backgroundColor: "#0d1020",
+                backgroundColor: "var(--hero-bg)",
                 background:
-                  "linear-gradient(135deg, #0d1020, #1a2556)",
+                  `linear-gradient(135deg, var(--hero-bg), var(--hero-bg-alt))`,
               }}
             >
               <h2
@@ -328,7 +327,7 @@ export default function About() {
               </h2>
               <p
                 className="mb-6 max-w-xl mx-auto text-sm"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "var(--hero-text-muted)" }}
               >
                 Get expert legal assistance today. Talk to our team on WhatsApp
                 or fill out our inquiry form.
@@ -344,8 +343,8 @@ export default function About() {
                 >
                   <Button
                     style={{
-                      backgroundColor: "#d4a434",
-                      borderColor: "#b88d2a",
+                      backgroundColor: "var(--gold)",
+                      borderColor: "var(--gold-dark)",
                       color: "#fff",
                     }}
                     data-testid="button-about-cta"
@@ -359,8 +358,8 @@ export default function About() {
                     variant="outline"
                     className="text-white"
                     style={{
-                      backgroundColor: "rgba(255,255,255,0.06)",
-                      borderColor: "rgba(255,255,255,0.2)",
+                      backgroundColor: "var(--hero-glass)",
+                      borderColor: "var(--hero-glass-border)",
                     }}
                   >
                     Contact Us

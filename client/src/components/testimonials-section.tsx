@@ -42,8 +42,8 @@ export function TestimonialsSection() {
                           key={i}
                           className="w-3.5 h-3.5"
                           style={{
-                            fill: i < testimonial.rating ? "#d4a434" : "transparent",
-                            color: i < testimonial.rating ? "#d4a434" : "hsl(var(--muted-foreground))",
+                            fill: i < testimonial.rating ? "var(--gold)" : "transparent",
+                            color: i < testimonial.rating ? "var(--gold)" : "hsl(var(--muted-foreground))",
                           }}
                         />
                       ))}
@@ -94,8 +94,8 @@ export function TestimonialsSection() {
                         key={i}
                         className="w-4 h-4"
                         style={{
-                          fill: i < testimonial.rating ? "#d4a434" : "transparent",
-                          color: i < testimonial.rating ? "#d4a434" : "hsl(var(--muted-foreground))",
+                          fill: i < testimonial.rating ? "var(--gold)" : "transparent",
+                          color: i < testimonial.rating ? "var(--gold)" : "hsl(var(--muted-foreground))",
                         }}
                       />
                     ))}
@@ -104,7 +104,7 @@ export function TestimonialsSection() {
                   <div className="relative mb-4 flex-1">
                     <Quote
                       className="absolute -top-1 -left-1 w-6 h-6 opacity-10"
-                      style={{ color: "#2f44a0" }}
+                      style={{ color: "var(--blue)" }}
                     />
                     <p
                       className="text-sm leading-relaxed pl-5"

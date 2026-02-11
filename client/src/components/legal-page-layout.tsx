@@ -32,9 +32,9 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
         <div
           className="relative py-16 md:py-24"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
           data-testid={`section-${pageKey}-hero`}
         >
@@ -42,7 +42,7 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(47,68,160,0.15), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -60,9 +60,9 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
               <Badge
                 className="text-xs"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderColor: "rgba(255,255,255,0.15)",
-                  color: "rgba(255,255,255,0.6)",
+                  backgroundColor: "var(--hero-badge-bg)",
+                  borderColor: "var(--hero-badge-border)",
+                  color: "var(--hero-badge-text)",
                 }}
                 data-testid={`text-${pageKey}-updated`}
               >

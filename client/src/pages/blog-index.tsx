@@ -22,16 +22,16 @@ export default function BlogIndex() {
         <div
           className="relative py-20 md:py-28"
           style={{
-            backgroundColor: "#0d1020",
+            backgroundColor: "var(--hero-bg)",
             background:
-              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
           }}
         >
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 50% 50% at 50% 30%, rgba(47,68,160,0.20), transparent 70%)",
+                `radial-gradient(ellipse 50% 50% at 50% 30%, var(--hero-glow-primary), transparent 70%)`,
             }}
           />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -43,9 +43,9 @@ export default function BlogIndex() {
               <Badge
                 className="mb-5 px-3 py-1 text-xs"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  borderColor: "rgba(255,255,255,0.15)",
-                  color: "rgba(255,255,255,0.8)",
+                  backgroundColor: "var(--hero-badge-bg)",
+                  borderColor: "var(--hero-badge-border)",
+                  color: "var(--hero-badge-text)",
                 }}
               >
                 LegalApex Blog
@@ -58,7 +58,7 @@ export default function BlogIndex() {
               </h1>
               <p
                 className="text-base sm:text-lg max-w-2xl mx-auto"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                style={{ color: "var(--hero-text-muted)" }}
                 data-testid="text-blog-description"
               >
                 Helpful guides and expert insights on Indian legal services —
