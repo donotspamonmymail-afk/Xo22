@@ -35,41 +35,31 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide pb-4">
-          <div className="flex gap-3" style={{ width: "max-content" }}>
-            {SERVICES.map((service, index) => (
-              <div key={service.slug} className="w-[280px] flex-shrink-0">
-                <Card className="h-full overflow-visible" data-testid={`card-service-${service.slug}`}>
-                  <div className="h-1 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
-                  <CardContent className="p-4 flex flex-col h-full">
-                    <div
-                      className="flex items-center justify-center w-10 h-10 rounded-lg mb-3"
-                      style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
-                    >
-                      <service.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <Link href={`/services/${service.slug}`} data-testid={`link-service-title-${service.slug}`}>
-                      <h3 className="text-base font-semibold mb-1.5">{service.title}</h3>
-                    </Link>
-                    <p className="text-xs text-muted-foreground leading-relaxed mb-3 flex-1 line-clamp-2">
-                      {service.description}
-                    </p>
-                    <div className="flex items-center justify-between gap-3 pt-3 border-t border-border">
-                      <span className="text-sm font-medium">
-                        From <span className="text-primary font-bold">{"\u20B9"}{service.price}</span>
-                      </span>
-                      <Link href={`/services/${service.slug}`} data-testid={`link-service-mobile-${service.slug}`}>
-                        <Button size="sm" variant="ghost" data-testid={`button-service-mobile-${service.slug}`}>
-                          Details
-                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
+        <div className="sm:hidden grid grid-cols-2 gap-3 pb-4">
+          {SERVICES.map((service, index) => (
+            <Link key={service.slug} href={`/services/${service.slug}`} data-testid={`link-service-mobile-${service.slug}`}>
+              <Card className="h-full overflow-visible hover-elevate" data-testid={`card-service-${service.slug}`}>
+                <div className="h-1 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
+                <CardContent className="p-3 flex flex-col h-full">
+                  <div
+                    className="flex items-center justify-center w-9 h-9 rounded-lg mb-2"
+                    style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
+                  >
+                    <service.icon className="w-4 h-4 text-white" />
+                  </div>
+                  <h3 className="text-xs font-semibold mb-1">{service.title}</h3>
+                  <p className="text-[10px] text-muted-foreground leading-snug mb-2 flex-1 line-clamp-2">
+                    {service.description}
+                  </p>
+                  <div className="pt-2 border-t border-border">
+                    <span className="text-[11px] font-medium">
+                      From <span className="text-primary font-bold text-xs">{"\u20B9"}{service.price}</span>
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
         </div>
 
         <motion.div
