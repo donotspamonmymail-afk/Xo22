@@ -20,15 +20,12 @@ export function CitiesBar() {
               Trusted Across India
             </Badge>
           </div>
-          <div className="sm:hidden overflow-x-auto scrollbar-hide -mx-4 px-4">
-            <div className="flex items-center gap-x-3" style={{ width: "max-content" }}>
-              {CITIES.map((city, index) => (
-                <span key={city} className="text-xs text-muted-foreground font-medium whitespace-nowrap" data-testid={`city-${index}`}>
-                  {city}
-                  {index < CITIES.length - 1 && <span className="ml-3 text-border">|</span>}
-                </span>
-              ))}
-            </div>
+          <div className="sm:hidden flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1">
+            {CITIES.map((city, index) => (
+              <Badge key={city} variant="secondary" className="text-[10px] font-medium" data-testid={`city-${index}`}>
+                {city}
+              </Badge>
+            ))}
           </div>
           <div className="hidden sm:flex flex-wrap items-center justify-center gap-x-3 gap-y-2 max-w-3xl mx-auto">
             {CITIES.map((city, index) => (

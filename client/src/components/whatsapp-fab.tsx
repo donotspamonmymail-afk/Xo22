@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import { HERO } from "@/lib/site-data";
 
 export function WhatsAppFab() {
+  const handleClick = () => {
+    window.open(
+      getWhatsAppLink(HERO.defaultWhatsAppMessage),
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <motion.div
       initial={{ scale: 0, opacity: 0 }}
@@ -12,21 +20,15 @@ export function WhatsAppFab() {
       transition={{ delay: 1, type: "spring", stiffness: 200 }}
       className="fixed bottom-6 right-6 z-50"
     >
-      <a
-        href={getWhatsAppLink(HERO.defaultWhatsAppMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-testid="link-whatsapp-fab"
+      <Button
+        size="lg"
+        onClick={handleClick}
+        className="rounded-full shadow-lg"
+        data-testid="button-whatsapp-fab"
+        aria-label="Chat on WhatsApp"
       >
-        <Button
-          size="icon"
-          data-testid="button-whatsapp-fab"
-          aria-label="Chat on WhatsApp"
-          className="rounded-full w-12 h-12 shadow-lg"
-        >
-          <MessageCircle className="w-5 h-5" />
-        </Button>
-      </a>
+        <MessageCircle className="w-5 h-5" />
+      </Button>
     </motion.div>
   );
 }

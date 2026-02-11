@@ -31,44 +31,43 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide pb-4">
-          <div className="flex gap-3" style={{ width: "max-content" }}>
-            {TESTIMONIALS_CONFIG.map((testimonial, index) => (
-              <div key={index} className="w-[300px] flex-shrink-0">
-                <Card className="h-full" data-testid={`card-testimonial-${index}`}>
-                  <CardContent className="p-4 flex flex-col h-full">
-                    <div className="flex items-center gap-1 mb-3">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3.5 h-3.5 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground"}`}
-                        />
-                      ))}
+        <div className="sm:hidden space-y-3">
+          {TESTIMONIALS_CONFIG.map((testimonial, index) => (
+            <Card key={index} className="h-full" data-testid={`card-testimonial-${index}`}>
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-3 h-3 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground"}`}
+                          />
+                        ))}
+                      </div>
+                      <Badge variant="secondary" className="text-[10px]">
+                        {testimonial.service}
+                      </Badge>
                     </div>
-                    <p className="text-xs leading-relaxed mb-3 flex-1 line-clamp-4" data-testid={`text-testimonial-mobile-${index}`}>
+                    <p className="text-xs leading-relaxed mb-2 line-clamp-3" data-testid={`text-testimonial-mobile-${index}`}>
                       "{testimonial.text}"
                     </p>
-                    <div className="border-t border-border pt-3 mt-auto">
-                      <div className="flex items-center justify-between gap-2 flex-wrap">
-                        <div>
-                          <p className="text-xs font-semibold" data-testid={`text-testimonial-name-${index}`}>
-                            {testimonial.name}
-                          </p>
-                          <p className="text-[10px] text-muted-foreground flex items-center gap-1 mt-0.5">
-                            <MapPin className="w-2.5 h-2.5" />
-                            {testimonial.location}
-                          </p>
-                        </div>
-                        <Badge variant="secondary" className="text-[10px]">
-                          {testimonial.service}
-                        </Badge>
-                      </div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-xs font-semibold" data-testid={`text-testimonial-name-${index}`}>
+                        {testimonial.name}
+                      </p>
+                      <span className="text-border">·</span>
+                      <p className="text-[10px] text-muted-foreground flex items-center gap-1">
+                        <MapPin className="w-2.5 h-2.5" />
+                        {testimonial.location}
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         <motion.div

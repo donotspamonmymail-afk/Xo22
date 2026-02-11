@@ -132,6 +132,43 @@ export default function ServiceDetail() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="lg:col-span-1 lg:hidden">
+              <Card data-testid="card-pricing-sidebar-mobile">
+                <CardContent className="p-5">
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div>
+                      <span className="text-2xl font-bold">
+                        {"\u20B9"}{serviceConfig.price}
+                      </span>
+                      <span className="text-sm text-muted-foreground ml-1">onwards</span>
+                    </div>
+                    <Badge variant="secondary" className="text-xs">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {detail.timeline}
+                    </Badge>
+                  </div>
+                  <div className="flex items-center gap-2 mt-3">
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button className="w-full" data-testid="button-service-mobile-cta">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Get Free Consultation
+                      </Button>
+                    </a>
+                    <a href="/contact" className="flex-shrink-0">
+                      <Button variant="outline" size="icon" data-testid="button-service-mobile-contact">
+                        <Phone className="w-4 h-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <div className="lg:col-span-2 space-y-6">
               <Card data-testid="section-whats-included">
                 <CardContent className="p-6">
@@ -317,7 +354,7 @@ export default function ServiceDetail() {
               )}
             </div>
 
-            <div className="lg:col-span-1">
+            <div className="hidden lg:block lg:col-span-1">
               <div className="lg:sticky lg:top-24 space-y-4">
                 <Card data-testid="card-pricing-sidebar">
                   <CardContent className="p-6">
