@@ -355,10 +355,10 @@ export const TRUST_GUARANTEES_CONFIG = [
 ] as const;
 
 export const STATS_CONFIG = [
-  { label: "Clients Served", value: "127+", key: "clients" },
-  { label: "Google Rating", value: "4.8", key: "rating" },
-  { label: "Legal Experts", value: "15+", key: "experts" },
-  { label: "Years in Practice", value: "7+", key: "years" },
+  { label: "Cases Handled", value: "2,400+", key: "clients" },
+  { label: "Client Satisfaction", value: "98%", key: "rating" },
+  { label: "Avg. Turnaround", value: "3 Days", key: "experts" },
+  { label: "Cities Covered", value: "50+", key: "years" },
 ] as const;
 
 export const PRICING_CONFIG = [

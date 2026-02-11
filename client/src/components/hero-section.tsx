@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MessageCircle, ArrowDown, Shield, BadgeCheck, Globe, Star, Briefcase, Award, Clock } from "lucide-react";
+import { MessageCircle, ArrowDown, Shield, BadgeCheck, Globe, Star, FileCheck, ThumbsUp, Zap, MapPin } from "lucide-react";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import { HERO, STATS } from "@/lib/site-data";
@@ -12,10 +12,10 @@ const trustIcons: Record<string, typeof Shield> = {
 };
 
 const statIcons: Record<string, typeof Star> = {
-  clients: Briefcase,
-  rating: Star,
-  experts: Award,
-  years: Clock,
+  clients: FileCheck,
+  rating: ThumbsUp,
+  experts: Zap,
+  years: MapPin,
 };
 
 export function HeroSection() {
