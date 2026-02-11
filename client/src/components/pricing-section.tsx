@@ -9,19 +9,91 @@ import { PRICING_PLANS, PRICING_DISCLAIMER } from "@/lib/site-data";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-muted/40" data-testid="section-pricing" aria-labelledby="pricing-heading">
+    <section id="pricing" className="py-14 sm:py-24 md:py-32 bg-muted/40" data-testid="section-pricing" aria-labelledby="pricing-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
             Pricing
           </p>
-          <h2 id="pricing-heading" className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-5" data-testid="text-pricing-heading">
+          <h2 id="pricing-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-pricing-heading">
             Transparent Plans, No Surprises
           </h2>
-          <p className="text-muted-foreground text-base leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             Choose a plan that fits your needs. All plans include expert support
             and a dedicated point of contact via WhatsApp.
           </p>
+        </div>
+
+        <div className="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide pb-4">
+          <div className="flex gap-3" style={{ width: "max-content" }}>
+            {PRICING_PLANS.map((plan) => (
+              <div key={plan.name} className="w-[280px] flex-shrink-0">
+                {plan.popular ? (
+                  <div
+                    className="relative rounded-xl overflow-visible p-[1px]"
+                    style={{
+                      background: "linear-gradient(135deg, #2f44a0, #1e2d6e)",
+                      boxShadow: "0 8px 24px -4px rgba(47,68,160,0.25)"
+                    }}
+                    data-testid={`card-pricing-${plan.name.toLowerCase()}`}
+                  >
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                      <Badge className="px-3 py-0.5 text-[10px] text-white" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a" }}>Most Popular</Badge>
+                    </div>
+                    <div className="rounded-xl p-5 flex flex-col h-full" style={{ background: "linear-gradient(135deg, rgba(47,68,160,0.97), #1a2556)" }}>
+                      <h3 className="text-base font-semibold mb-1 text-white">{plan.name}</h3>
+                      <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.6)" }}>{plan.description}</p>
+                      <div className="mb-4">
+                        <span className="text-3xl font-bold text-white">{"\u20B9"}{plan.price}</span>
+                        <span className="text-xs ml-1" style={{ color: "rgba(255,255,255,0.5)" }}>+ onwards</span>
+                      </div>
+                      <ul className="space-y-2 mb-4 flex-1">
+                        {plan.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-2 text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>
+                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "#d4a434" }} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
+                        <Button className="w-full" size="sm" style={{ backgroundColor: "#ffffff", color: "#2f44a0" }} data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
+                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                          Get Started
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <Card className="h-full" data-testid={`card-pricing-${plan.name.toLowerCase()}`}>
+                    <CardContent className="p-5 flex flex-col h-full">
+                      <h3 className="text-base font-semibold mb-1">{plan.name}</h3>
+                      <p className="text-xs text-muted-foreground mb-3">{plan.description}</p>
+                      <div className="mb-4">
+                        <span className="text-3xl font-bold">{"\u20B9"}{plan.price}</span>
+                        <span className="text-muted-foreground text-xs ml-1">+ onwards</span>
+                      </div>
+                      <ul className="space-y-2 mb-4 flex-1">
+                        {plan.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-2 text-xs">
+                            <div className="flex items-center justify-center w-4 h-4 rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
+                              <Check className="w-2.5 h-2.5 text-primary" />
+                            </div>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
+                        <Button className="w-full" size="sm" variant="outline" data-testid={`button-pricing-mobile-${plan.name.toLowerCase()}`}>
+                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                          Get Started
+                        </Button>
+                      </a>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         <motion.div
@@ -29,7 +101,7 @@ export function PricingSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto items-stretch"
+          className="hidden sm:grid grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto items-stretch"
         >
           {PRICING_PLANS.map((plan) => (
             <motion.div key={plan.name} variants={fadeUpItem} className={plan.popular ? "md:-mt-4 md:mb-[-16px]" : ""}>
@@ -128,7 +200,7 @@ export function PricingSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center text-xs text-muted-foreground mt-10 max-w-lg mx-auto"
+          className="text-center text-[10px] sm:text-xs text-muted-foreground mt-6 sm:mt-10 max-w-lg mx-auto"
           data-testid="text-pricing-disclaimer"
         >
           {PRICING_DISCLAIMER}

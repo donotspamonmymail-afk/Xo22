@@ -43,14 +43,14 @@ export function HeroSection() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 sm:pt-32 sm:pb-24 md:pt-40 md:pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-14 sm:pt-32 sm:pb-24 md:pt-40 md:pb-32">
         <div className="text-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-6 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase bg-white/10 border-white/20 text-white/90">
+            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase bg-white/10 border-white/20 text-white/90">
               {HERO.badge}
             </Badge>
           </motion.div>
@@ -60,7 +60,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-6 sm:mb-8 text-white"
+            className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-8 text-white"
             data-testid="text-hero-heading"
           >
             {HERO.headingStart}{" "}
@@ -71,7 +71,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed"
+            className="text-sm sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed"
             data-testid="text-hero-subheading"
           >
             {HERO.subheading}
@@ -81,14 +81,15 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-14"
           >
             <a
               href={getWhatsAppLink(HERO.defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
-              <Button size="lg" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a", color: "#fff" }} data-testid="button-hero-whatsapp">
+              <Button size="lg" className="w-full sm:w-auto" style={{ backgroundColor: "#d4a434", borderColor: "#b88d2a", color: "#fff" }} data-testid="button-hero-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 {HERO.ctaPrimary}
               </Button>
@@ -97,7 +98,7 @@ export function HeroSection() {
               size="lg"
               variant="outline"
               onClick={scrollToServices}
-              className="text-white"
+              className="text-white w-full sm:w-auto"
               style={{ backgroundColor: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.2)" }}
               data-testid="button-hero-services"
             >
@@ -110,7 +111,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto mb-10 sm:mb-14"
+            className="grid grid-cols-4 gap-2 sm:gap-4 max-w-2xl mx-auto mb-8 sm:mb-14"
             data-testid="stats-bar"
           >
             {STATS.map((stat) => {
@@ -118,13 +119,13 @@ export function HeroSection() {
               return (
                 <div
                   key={stat.key}
-                  className="flex flex-col items-center gap-1.5 p-3 sm:p-4 rounded-md"
+                  className="flex flex-col items-center gap-1 p-2 sm:p-4 rounded-md"
                   style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
                   data-testid={`stat-${stat.key}`}
                 >
-                  <Icon className="w-4 h-4" style={{ color: "#d4a434" }} />
-                  <span className="text-xl sm:text-3xl font-extrabold tracking-tight text-white">{stat.value}</span>
-                  <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>{stat.label}</span>
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block" style={{ color: "#d4a434" }} />
+                  <span className="text-lg sm:text-3xl font-extrabold tracking-tight text-white">{stat.value}</span>
+                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>{stat.label}</span>
                 </div>
               );
             })}
@@ -134,7 +135,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap items-center justify-center gap-4 sm:gap-8"
+            className="hidden sm:flex flex-wrap items-center justify-center gap-4 sm:gap-8"
           >
             {HERO.trustBadges.map((badge) => {
               const Icon = trustIcons[badge.key] || Shield;

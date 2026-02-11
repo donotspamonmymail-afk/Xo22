@@ -18,19 +18,56 @@ const ACCENT_GRADIENTS = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 md:py-32" data-testid="section-services" aria-labelledby="services-heading">
+    <section id="services" className="py-14 sm:py-24 md:py-32" data-testid="section-services" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
             Our Services
           </p>
-          <h2 id="services-heading" className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-5" data-testid="text-services-heading">
+          <h2 id="services-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-services-heading">
             Legal Solutions, Simplified
           </h2>
-          <p className="text-muted-foreground text-base leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             From individuals to growing businesses, we provide end-to-end legal assistance
             with transparent pricing and fast turnaround across India.
           </p>
+        </div>
+
+        <div className="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide pb-4">
+          <div className="flex gap-3" style={{ width: "max-content" }}>
+            {SERVICES.map((service, index) => (
+              <div key={service.slug} className="w-[280px] flex-shrink-0">
+                <Card className="h-full overflow-visible" data-testid={`card-service-${service.slug}`}>
+                  <div className="h-1 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
+                  <CardContent className="p-4 flex flex-col h-full">
+                    <div
+                      className="flex items-center justify-center w-10 h-10 rounded-lg mb-3"
+                      style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
+                    >
+                      <service.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <Link href={`/services/${service.slug}`} data-testid={`link-service-title-${service.slug}`}>
+                      <h3 className="text-base font-semibold mb-1.5">{service.title}</h3>
+                    </Link>
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-3 flex-1 line-clamp-2">
+                      {service.description}
+                    </p>
+                    <div className="flex items-center justify-between gap-3 pt-3 border-t border-border">
+                      <span className="text-sm font-medium">
+                        From <span className="text-primary font-bold">{"\u20B9"}{service.price}</span>
+                      </span>
+                      <Link href={`/services/${service.slug}`} data-testid={`link-service-mobile-${service.slug}`}>
+                        <Button size="sm" variant="ghost" data-testid={`button-service-mobile-${service.slug}`}>
+                          Details
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
 
         <motion.div
@@ -38,7 +75,7 @@ export function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+          className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
         >
           {SERVICES.map((service, index) => (
             <motion.div key={service.slug} variants={fadeUpItem}>

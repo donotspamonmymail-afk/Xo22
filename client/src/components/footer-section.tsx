@@ -38,8 +38,73 @@ export function FooterSection() {
 
   return (
     <footer className="border-t border-border text-white" style={{ backgroundColor: "#0d1020" }} data-testid="section-footer" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
+        <div className="sm:hidden">
+          <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-home" aria-label={`${SITE.name} - Go to homepage`}>
+            <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-primary to-primary/80">
+              <Scale className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-lg font-bold tracking-[-0.02em] text-white">
+              Legal<span className="text-[hsl(36,80%,60%)]">Apex</span>
+            </span>
+          </Link>
+          <p className="text-xs text-white/50 leading-relaxed mb-5">
+            {SITE.tagline} {SITE.description.split(".")[0]}.
+          </p>
+
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 mb-6">
+            <div>
+              <h4 className="text-xs font-semibold mb-2 text-white/80">Services</h4>
+              <ul className="space-y-1.5">
+                {SERVICES.map((service) => (
+                  <li key={service.slug}>
+                    <Link href={`/services/${service.slug}`} className="text-xs text-white/40 hover:text-white transition-colors" data-testid={`link-footer-service-${service.slug}`}>
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold mb-2 text-white/80">Company</h4>
+              <ul className="space-y-1.5">
+                {COMPANY_LINKS.filter(l => l.href.startsWith("/")).map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-xs text-white/40 hover:text-white transition-colors" data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, "-")}`}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <h4 className="text-xs font-semibold mb-2 mt-4 text-white/80">Legal</h4>
+              <ul className="space-y-1.5">
+                {LEGAL_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-xs text-white/40 hover:text-white transition-colors" data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, "-")}`}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-xs text-white/40 flex items-center gap-1.5" data-testid="link-footer-mobile-whatsapp">
+              <MessageCircle className="w-3.5 h-3.5" /> Chat
+            </a>
+            <span className="text-white/10">|</span>
+            <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="text-xs text-white/40 flex items-center gap-1.5" data-testid="link-footer-mobile-phone">
+              <Phone className="w-3.5 h-3.5" /> Call
+            </a>
+            <span className="text-white/10">|</span>
+            <a href={`mailto:${SITE.email}`} className="text-xs text-white/40 flex items-center gap-1.5" data-testid="link-footer-mobile-email">
+              <Mail className="w-3.5 h-3.5" /> Email
+            </a>
+          </div>
+        </div>
+
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-home" aria-label={`${SITE.name} - Go to homepage`}>
               <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-primary to-primary/80">
@@ -152,11 +217,11 @@ export function FooterSection() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10">
-          <p className="text-xs text-white/30 leading-relaxed text-center max-w-3xl mx-auto" data-testid="text-disclaimer">
+        <div className="mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-white/10">
+          <p className="text-[10px] sm:text-xs text-white/30 leading-relaxed text-center max-w-3xl mx-auto" data-testid="text-disclaimer">
             {SITE.disclaimer}
           </p>
-          <p className="text-xs text-white/30 text-center mt-3" data-testid="text-copyright">
+          <p className="text-[10px] sm:text-xs text-white/30 text-center mt-2 sm:mt-3" data-testid="text-copyright">
             &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
         </div>

@@ -22,7 +22,8 @@ export function MobileWhatsAppCta() {
         href={getWhatsAppLink(HERO.defaultWhatsAppMessage)}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 w-full py-3.5 bg-primary text-primary-foreground font-semibold text-sm shadow-lg"
+        className="flex items-center justify-center gap-2 w-full py-3 text-sm font-semibold text-white shadow-lg"
+        style={{ backgroundColor: "#25d366" }}
         data-testid="link-mobile-sticky-whatsapp"
         aria-label="Get Free Consultation on WhatsApp"
       >

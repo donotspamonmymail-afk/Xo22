@@ -13,19 +13,42 @@ const ICON_GRADIENTS = [
 
 export function WhySection() {
   return (
-    <section id="why-us" className="py-24 md:py-32 bg-muted/40" data-testid="section-why-us" aria-labelledby="why-us-heading">
+    <section id="why-us" className="py-14 sm:py-24 md:py-32 bg-muted/40" data-testid="section-why-us" aria-labelledby="why-us-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-4">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
             Why LegalApex
           </p>
-          <h2 id="why-us-heading" className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-5" data-testid="text-why-heading">
+          <h2 id="why-us-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-why-heading">
             Built on Trust, Driven by Results
           </h2>
-          <p className="text-muted-foreground text-base leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             We believe legal services should be accessible, affordable, and honest.
             Here's what sets us apart.
           </p>
+        </div>
+
+        <div className="sm:hidden space-y-3">
+          {WHY_REASONS.map((reason, index) => (
+            <div
+              key={reason.title}
+              className="flex items-start gap-3 p-3 rounded-lg bg-card border border-border"
+              data-testid={`card-why-${reason.title.toLowerCase().replace(/\s/g, "-")}`}
+            >
+              <div
+                className="flex items-center justify-center w-9 h-9 rounded-lg flex-shrink-0"
+                style={{ background: ICON_GRADIENTS[index % ICON_GRADIENTS.length] }}
+              >
+                <reason.icon className="w-4 h-4 text-white" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold mb-0.5">{reason.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {reason.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
         <motion.div
@@ -33,7 +56,7 @@ export function WhySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto"
+          className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto"
         >
           {WHY_REASONS.map((reason, index) => (
             <motion.div key={reason.title} variants={fadeUpItem}>
