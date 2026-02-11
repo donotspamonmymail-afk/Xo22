@@ -40,11 +40,7 @@ export function TestimonialsSection() {
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
-                          className="w-3.5 h-3.5"
-                          style={{
-                            fill: i < testimonial.rating ? "var(--gold)" : "transparent",
-                            color: i < testimonial.rating ? "var(--gold)" : "hsl(var(--muted-foreground))",
-                          }}
+                          className={`w-3.5 h-3.5 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground"}`}
                         />
                       ))}
                     </div>
@@ -83,33 +79,20 @@ export function TestimonialsSection() {
         >
           {TESTIMONIALS_CONFIG.map((testimonial, index) => (
             <motion.div key={index} variants={fadeUpItem}>
-              <Card
-                className="h-full"
-                data-testid={`card-testimonial-${index}`}
-              >
+              <Card className="h-full" data-testid={`card-testimonial-${index}`}>
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center gap-1 mb-4">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className="w-4 h-4"
-                        style={{
-                          fill: i < testimonial.rating ? "var(--gold)" : "transparent",
-                          color: i < testimonial.rating ? "var(--gold)" : "hsl(var(--muted-foreground))",
-                        }}
+                        className={`w-4 h-4 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "text-muted-foreground"}`}
                       />
                     ))}
                   </div>
 
                   <div className="relative mb-4 flex-1">
-                    <Quote
-                      className="absolute -top-1 -left-1 w-6 h-6 opacity-10"
-                      style={{ color: "var(--blue)" }}
-                    />
-                    <p
-                      className="text-sm leading-relaxed pl-5"
-                      data-testid={`text-testimonial-${index}`}
-                    >
+                    <Quote className="absolute -top-1 -left-1 w-6 h-6 text-primary/10" />
+                    <p className="text-sm leading-relaxed pl-5" data-testid={`text-testimonial-${index}`}>
                       {testimonial.text}
                     </p>
                   </div>
@@ -117,10 +100,7 @@ export function TestimonialsSection() {
                   <div className="border-t border-border pt-4 mt-auto">
                     <div className="flex items-center justify-between gap-2 flex-wrap">
                       <div>
-                        <p
-                          className="text-sm font-semibold"
-                          data-testid={`text-testimonial-name-${index}`}
-                        >
+                        <p className="text-sm font-semibold" data-testid={`text-testimonial-name-${index}`}>
                           {testimonial.name}
                         </p>
                         <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">

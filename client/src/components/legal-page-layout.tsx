@@ -30,21 +30,9 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
 
       <main className="pt-20 pb-20">
         <div
-          className="relative py-16 md:py-24"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
+          className="relative py-16 md:py-24 bg-muted/50"
           data-testid={`section-${pageKey}-hero`}
         >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial="hidden"
@@ -52,18 +40,14 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
               variants={sectionVariants}
             >
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-3 text-white"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-3"
                 data-testid={`text-${pageKey}-heading`}
               >
                 {title}
               </h1>
               <Badge
+                variant="secondary"
                 className="text-xs"
-                style={{
-                  backgroundColor: "var(--hero-badge-bg)",
-                  borderColor: "var(--hero-badge-border)",
-                  color: "var(--hero-badge-text)",
-                }}
                 data-testid={`text-${pageKey}-updated`}
               >
                 Last Updated: {config.lastUpdated}

@@ -31,26 +31,23 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden"
-      style={{ backgroundColor: "var(--hero-bg)" }}
+      className="relative overflow-hidden bg-background"
       data-testid="section-hero"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 60% 50% at 50% 0%, var(--hero-glow-primary), transparent 70%)` }} />
-        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 40% 60% at 80% 60%, var(--hero-glow-accent), transparent 60%)` }} />
-        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse 50% 40% at 10% 80%, var(--hero-glow-primary), transparent 60%)` }} />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-60" style={{ background: "var(--hero-glow-1)", filter: "blur(120px)" }} />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-50" style={{ background: "var(--hero-glow-2)", filter: "blur(100px)" }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-14 sm:pt-32 sm:pb-24 md:pt-40 md:pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 sm:pt-36 sm:pb-24 md:pt-44 md:pb-32">
         <div className="text-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase" style={{ backgroundColor: "var(--hero-badge-bg)", borderColor: "var(--hero-badge-border)", color: "var(--hero-badge-text)" }}>
+            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase" data-testid="badge-hero">
               {HERO.badge}
             </Badge>
           </motion.div>
@@ -60,19 +57,18 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-8 text-white"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-8"
             data-testid="text-hero-heading"
           >
             {HERO.headingStart}{" "}
-            <span style={{ background: `linear-gradient(to right, var(--gold), var(--gold-light))`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{HERO.headingHighlight}</span>
+            <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">{HERO.headingHighlight}</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed"
-            style={{ color: "var(--hero-text-muted)" }}
+            className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed text-muted-foreground"
             data-testid="text-hero-subheading"
           >
             {HERO.subheading}
@@ -90,7 +86,7 @@ export function HeroSection() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >
-              <Button size="lg" className="w-full sm:w-auto" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)", color: "#fff" }} data-testid="button-hero-whatsapp">
+              <Button size="lg" className="w-full sm:w-auto" data-testid="button-hero-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 {HERO.ctaPrimary}
               </Button>
@@ -99,8 +95,7 @@ export function HeroSection() {
               size="lg"
               variant="outline"
               onClick={scrollToServices}
-              className="text-white w-full sm:w-auto"
-              style={{ backgroundColor: "var(--hero-glass)", borderColor: "var(--hero-glass-border)" }}
+              className="w-full sm:w-auto"
               data-testid="button-hero-services"
             >
               {HERO.ctaSecondary}
@@ -120,13 +115,12 @@ export function HeroSection() {
               return (
                 <div
                   key={stat.key}
-                  className="flex flex-col items-center gap-1 p-2 sm:p-4 rounded-md"
-                  style={{ backgroundColor: "var(--hero-glass)", border: "1px solid var(--hero-glass-border)" }}
+                  className="flex flex-col items-center gap-1 p-2 sm:p-4 rounded-md bg-card border border-border"
                   data-testid={`stat-${stat.key}`}
                 >
-                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block" style={{ color: "var(--gold)" }} />
-                  <span className="text-lg sm:text-3xl font-extrabold tracking-tight text-white">{stat.value}</span>
-                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider" style={{ color: "var(--hero-text-faint)" }}>{stat.label}</span>
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block text-primary" />
+                  <span className="text-lg sm:text-3xl font-extrabold tracking-tight">{stat.value}</span>
+                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{stat.label}</span>
                 </div>
               );
             })}
@@ -143,12 +137,11 @@ export function HeroSection() {
               return (
                 <div
                   key={badge.key}
-                  className="flex items-center gap-2 text-xs sm:text-sm"
-                  style={{ color: "var(--hero-text-faint)" }}
+                  className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground"
                   data-testid={`badge-${badge.key}`}
                 >
-                  <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md" style={{ backgroundColor: "var(--hero-glass)" }}>
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: "var(--gold)" }} />
+                  <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/5 dark:bg-primary/10">
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                   </div>
                   <span className="font-medium">{badge.label}</span>
                 </div>

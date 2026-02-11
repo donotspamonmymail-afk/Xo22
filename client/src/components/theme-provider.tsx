@@ -17,14 +17,18 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("legalapex-theme") as Theme;
-      if (stored) return stored;
-      return "light";
+  const [theme, setTheme] = useState<Theme>("light");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("legalapex-theme") as Theme;
+    if (stored === "dark") {
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
+    } else {
+      localStorage.setItem("legalapex-theme", "light");
+      document.documentElement.classList.remove("dark");
     }
-    return "light";
-  });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;

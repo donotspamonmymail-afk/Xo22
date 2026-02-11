@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { staggerContainerSlow, fadeUpItem } from "@/lib/motion";
 import { HOW_IT_WORKS_STEPS } from "@/lib/site-data";
 
+const STEP_GRADIENTS = [
+  "var(--gradient-1)",
+  "var(--gradient-2)",
+  "var(--gradient-3)",
+  "var(--gradient-4)",
+];
+
 export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="py-14 sm:py-24 md:py-32" data-testid="section-how-it-works" aria-labelledby="how-it-works-heading">
@@ -28,7 +35,7 @@ export function HowItWorksSection() {
               <div className="flex-shrink-0">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: "var(--gradient-blue)" }}
+                  style={{ background: STEP_GRADIENTS[index % STEP_GRADIENTS.length] }}
                 >
                   <span className="text-sm font-bold text-white">{step.number}</span>
                 </div>
@@ -63,9 +70,9 @@ export function HowItWorksSection() {
               {index < HOW_IT_WORKS_STEPS.length - 1 && (
                 <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] border-t-2 border-dashed border-primary/20" />
               )}
-              <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/5 mb-5 border border-primary/10">
+              <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/5 dark:bg-primary/10 mb-5 border border-primary/10">
                 <step.icon className="w-8 h-8 text-primary" />
-                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center shadow-md" style={{ background: "var(--gradient-blue)" }}>
+                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center shadow-md" style={{ background: STEP_GRADIENTS[index % STEP_GRADIENTS.length] }}>
                   <span className="text-xs font-bold text-white">{step.number}</span>
                 </div>
               </div>

@@ -19,21 +19,7 @@ export default function BlogIndex() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div
-          className="relative py-20 md:py-28"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 50% 30%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
+        <div className="relative py-20 md:py-28 bg-muted/50">
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial="hidden"
@@ -41,24 +27,19 @@ export default function BlogIndex() {
               variants={sectionVariants}
             >
               <Badge
+                variant="secondary"
                 className="mb-5 px-3 py-1 text-xs"
-                style={{
-                  backgroundColor: "var(--hero-badge-bg)",
-                  borderColor: "var(--hero-badge-border)",
-                  color: "var(--hero-badge-text)",
-                }}
               >
                 LegalApex Blog
               </Badge>
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4"
                 data-testid="text-blog-heading"
               >
                 Legal Insights & Guides
               </h1>
               <p
-                className="text-base sm:text-lg max-w-2xl mx-auto"
-                style={{ color: "var(--hero-text-muted)" }}
+                className="text-base sm:text-lg max-w-2xl mx-auto text-muted-foreground"
                 data-testid="text-blog-description"
               >
                 Helpful guides and expert insights on Indian legal services —

@@ -44,21 +44,7 @@ export default function BlogPost() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div
-          className="relative py-16 md:py-24"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
+        <div className="relative py-16 md:py-24 bg-muted/50">
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -66,14 +52,13 @@ export default function BlogPost() {
               variants={sectionVariants}
             >
               <nav
-                className="flex items-center gap-1.5 text-sm mb-6 flex-wrap"
-                style={{ color: "var(--hero-text-faint)" }}
+                className="flex items-center gap-1.5 text-sm mb-6 flex-wrap text-muted-foreground"
                 aria-label="Breadcrumb"
                 data-testid="nav-breadcrumb"
               >
                 <Link
                   href="/"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-foreground transition-colors"
                   data-testid="link-breadcrumb-home"
                 >
                   Home
@@ -81,14 +66,14 @@ export default function BlogPost() {
                 <ChevronRight className="w-3 h-3" />
                 <Link
                   href="/blog"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-foreground transition-colors"
                   data-testid="link-breadcrumb-blog"
                 >
                   Blog
                 </Link>
                 <ChevronRight className="w-3 h-3" />
                 <span
-                  className="text-white truncate max-w-xs font-medium"
+                  className="text-foreground truncate max-w-xs font-medium"
                   data-testid="text-breadcrumb-current"
                 >
                   {post.title}
@@ -97,26 +82,19 @@ export default function BlogPost() {
 
               <div>
                 <Badge
+                  variant="secondary"
                   className="mb-4 text-xs"
-                  style={{
-                    backgroundColor: "var(--hero-badge-bg)",
-                    borderColor: "var(--hero-badge-border)",
-                    color: "var(--hero-badge-text)",
-                  }}
                   data-testid="badge-post-category"
                 >
                   {post.category}
                 </Badge>
                 <h1
-                  className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-4 text-white"
+                  className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-4"
                   data-testid="text-blog-post-heading"
                 >
                   {post.title}
                 </h1>
-                <div
-                  className="flex items-center gap-4 text-sm flex-wrap"
-                  style={{ color: "var(--hero-text-faint)" }}
-                >
+                <div className="flex items-center gap-4 text-sm flex-wrap text-muted-foreground">
                   <span
                     className="flex items-center gap-1"
                     data-testid="text-post-readtime"
@@ -188,7 +166,7 @@ export default function BlogPost() {
                       <div
                         className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                         style={{
-                          background: "var(--gradient-blue)",
+                          background: "var(--gradient-1)",
                         }}
                       >
                         <Shield className="w-5 h-5 text-white" />
@@ -210,17 +188,11 @@ export default function BlogPost() {
                         </p>
                         <ul className="flex items-center gap-4 text-xs text-muted-foreground mb-4 flex-wrap">
                           <li className="flex items-center gap-1">
-                            <Check
-                              className="w-3 h-3"
-                              style={{ color: "var(--green)" }}
-                            />
+                            <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                             Money-back guarantee
                           </li>
                           <li className="flex items-center gap-1">
-                            <Check
-                              className="w-3 h-3"
-                              style={{ color: "var(--green)" }}
-                            />
+                            <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                             Verified experts
                           </li>
                         </ul>

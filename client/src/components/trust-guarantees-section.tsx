@@ -32,14 +32,8 @@ export function TrustGuaranteesSection() {
                 className="flex flex-col items-center text-center"
                 data-testid={`trust-guarantee-${guarantee.key}`}
               >
-                <div
-                  className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full mb-2 sm:mb-4"
-                  style={{
-                    backgroundColor: "var(--blue-bg)",
-                    border: "1px solid var(--blue-border)",
-                  }}
-                >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: "var(--blue)" }} />
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full mb-2 sm:mb-4 bg-primary/5 dark:bg-primary/10 border border-primary/10">
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
                 <h3
                   className="text-xs sm:text-sm font-semibold mb-0.5 sm:mb-1"

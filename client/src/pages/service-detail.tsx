@@ -61,38 +61,24 @@ export default function ServiceDetail() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div
-          className="relative py-16 md:py-24"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 30% 50%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
+        <div className="relative py-16 md:py-24 bg-muted/50">
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-1.5 text-sm flex-wrap" style={{ color: "var(--hero-text-faint)" }}>
+              <ol className="flex items-center gap-1.5 text-sm flex-wrap text-muted-foreground">
                 <li>
-                  <Link href="/" className="hover:text-white transition-colors" data-testid="link-breadcrumb-home">
+                  <Link href="/" className="hover:text-foreground transition-colors" data-testid="link-breadcrumb-home">
                     Home
                   </Link>
                 </li>
                 <li><ChevronRight className="w-3 h-3" /></li>
                 <li>
-                  <Link href="/#services" className="hover:text-white transition-colors" data-testid="link-breadcrumb-services">
+                  <Link href="/#services" className="hover:text-foreground transition-colors" data-testid="link-breadcrumb-services">
                     Services
                   </Link>
                 </li>
                 <li><ChevronRight className="w-3 h-3" /></li>
                 <li>
-                  <span className="text-white font-medium" data-testid="text-breadcrumb-current">
+                  <span className="text-foreground font-medium" data-testid="text-breadcrumb-current">
                     {serviceConfig.title}
                   </span>
                 </li>
@@ -110,33 +96,32 @@ export default function ServiceDetail() {
                 <div
                   className="flex items-center justify-center w-12 h-12 rounded-lg mb-5"
                   style={{
-                    background: "var(--gradient-blue)",
+                    background: "var(--gradient-1)",
                   }}
                 >
                   <ServiceIcon className="w-6 h-6 text-white" />
                 </div>
               )}
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4"
                 data-testid="text-service-hero-title"
               >
                 {detail.heroTitle}
               </h1>
               <p
-                className="text-base sm:text-lg leading-relaxed mb-6"
-                style={{ color: "var(--hero-text-muted)" }}
+                className="text-base sm:text-lg leading-relaxed mb-6 text-muted-foreground"
                 data-testid="text-service-hero-description"
               >
                 {detail.heroDescription}
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl font-bold text-white" data-testid="text-service-price">
+                  <span className="text-2xl font-bold" data-testid="text-service-price">
                     {"\u20B9"}{serviceConfig.price}
                   </span>
-                  <span className="text-sm" style={{ color: "var(--hero-text-dim)" }}>onwards</span>
+                  <span className="text-sm text-muted-foreground">onwards</span>
                 </div>
-                <Badge className="text-xs" style={{ backgroundColor: "var(--hero-badge-bg)", borderColor: "var(--hero-badge-border)", color: "var(--hero-badge-text)" }}>
+                <Badge variant="secondary" className="text-xs">
                   <Clock className="w-3 h-3 mr-1" />
                   {detail.timeline}
                 </Badge>
@@ -163,16 +148,8 @@ export default function ServiceDetail() {
                         className="flex items-start gap-2.5"
                         data-testid={`card-included-${i}`}
                       >
-                        <div
-                          className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5"
-                          style={{
-                            backgroundColor: "var(--green-bg)",
-                          }}
-                        >
-                          <Check
-                            className="w-3 h-3"
-                            style={{ color: "var(--green)" }}
-                          />
+                        <div className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5 bg-emerald-100 dark:bg-emerald-900/30">
+                          <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <span
                           className="text-sm leading-relaxed"
@@ -228,7 +205,7 @@ export default function ServiceDetail() {
                           <div
                             className="flex items-center justify-center w-8 h-8 rounded-full flex-shrink-0 text-xs font-bold text-white"
                             style={{
-                              background: "var(--gradient-blue)",
+                              background: "var(--gradient-1)",
                             }}
                           >
                             {i + 1}
@@ -357,11 +334,11 @@ export default function ServiceDetail() {
                     </div>
                     <ul className="space-y-2.5 mb-5">
                       <li className="flex items-center gap-2 text-sm">
-                        <Check className="w-4 h-4" style={{ color: "var(--green)" }} />
+                        <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         Expert legal assistance
                       </li>
                       <li className="flex items-center gap-2 text-sm">
-                        <Check className="w-4 h-4" style={{ color: "var(--green)" }} />
+                        <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         Complete document handling
                       </li>
                       <li className="flex items-center gap-2 text-sm">
@@ -369,7 +346,7 @@ export default function ServiceDetail() {
                         {detail.timeline}
                       </li>
                       <li className="flex items-center gap-2 text-sm">
-                        <Shield className="w-4 h-4" style={{ color: "var(--gold)" }} />
+                        <Shield className="w-4 h-4 text-amber-500" />
                         Money-back guarantee
                       </li>
                     </ul>
@@ -407,29 +384,26 @@ export default function ServiceDetail() {
                 <Card>
                   <CardContent className="p-5">
                     <div className="flex items-center gap-3 mb-3">
-                      <div
-                        className="flex items-center justify-center w-8 h-8 rounded-full"
-                        style={{ backgroundColor: "var(--blue-bg)" }}
-                      >
-                        <Shield className="w-4 h-4" style={{ color: "var(--blue)" }} />
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10">
+                        <Shield className="w-4 h-4 text-primary" />
                       </div>
                       <h4 className="text-sm font-semibold">Our Guarantee</h4>
                     </div>
                     <ul className="space-y-2 text-xs text-muted-foreground">
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
                         7-day money-back guarantee
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
                         100% confidential handling
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
                         Verified legal professionals
                       </li>
                       <li className="flex items-start gap-2">
-                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "var(--green)" }} />
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
                         Dedicated support via WhatsApp
                       </li>
                     </ul>

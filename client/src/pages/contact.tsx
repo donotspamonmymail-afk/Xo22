@@ -57,21 +57,7 @@ export default function Contact() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div
-          className="relative py-20 md:py-28"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 50% 50%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
+        <div className="relative py-20 md:py-28 bg-muted/50">
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -80,14 +66,13 @@ export default function Contact() {
               className="max-w-2xl"
             >
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4"
                 data-testid="text-contact-hero-title"
               >
                 {config.heroTitle}
               </h1>
               <p
-                className="text-base sm:text-lg leading-relaxed"
-                style={{ color: "var(--hero-text-muted)" }}
+                className="text-base sm:text-lg leading-relaxed text-muted-foreground"
                 data-testid="text-contact-hero-description"
               >
                 {config.heroDescription}
@@ -119,17 +104,8 @@ export default function Contact() {
                       className="text-center py-10"
                       data-testid="form-success"
                     >
-                      <div
-                        className="flex items-center justify-center w-14 h-14 rounded-full mx-auto mb-4"
-                        style={{
-                          backgroundColor: "var(--green-bg)",
-                          border: "1px solid var(--green-border)",
-                        }}
-                      >
-                        <MessageCircle
-                          className="w-6 h-6"
-                          style={{ color: "var(--green)" }}
-                        />
+                      <div className="flex items-center justify-center w-14 h-14 rounded-full mx-auto mb-4 bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800">
+                        <MessageCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                       </div>
                       <h3 className="text-lg font-semibold mb-2">
                         Inquiry Sent!
@@ -304,7 +280,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "var(--gradient-whatsapp)",
+                        background: "linear-gradient(135deg, #25D366, #128C7E)",
                       }}
                     >
                       <MessageCircle className="w-5 h-5 text-white" />
@@ -339,7 +315,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "var(--gradient-blue)",
+                        background: "var(--gradient-1)",
                       }}
                     >
                       <Mail className="w-5 h-5 text-white" />
@@ -377,7 +353,7 @@ export default function Contact() {
                     <div
                       className="flex items-center justify-center w-10 h-10 rounded-lg flex-shrink-0"
                       style={{
-                        background: "var(--gradient-gold)",
+                        background: "var(--gradient-2)",
                       }}
                     >
                       <Phone className="w-5 h-5 text-white" />
@@ -406,10 +382,7 @@ export default function Contact() {
               <div className="grid grid-cols-2 gap-4">
                 <Card data-testid="card-office-hours">
                   <CardContent className="p-4">
-                    <Clock
-                      className="w-4 h-4 mb-2"
-                      style={{ color: "var(--blue)" }}
-                    />
+                    <Clock className="w-4 h-4 mb-2 text-primary" />
                     <p
                       className="text-xs font-semibold mb-0.5"
                       data-testid="text-office-hours-title"
@@ -426,10 +399,7 @@ export default function Contact() {
                 </Card>
                 <Card data-testid="card-response-time">
                   <CardContent className="p-4">
-                    <Zap
-                      className="w-4 h-4 mb-2"
-                      style={{ color: "var(--gold)" }}
-                    />
+                    <Zap className="w-4 h-4 mb-2 text-amber-500" />
                     <p
                       className="text-xs font-semibold mb-0.5"
                       data-testid="text-response-time-title"

@@ -18,8 +18,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isLanding = location === "/";
-
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href.startsWith("#")) {
@@ -36,8 +34,6 @@ export function Navbar() {
     }
   };
 
-  const showDarkNav = isLanding && !scrolled;
-
   return (
     <nav
       data-testid="navbar"
@@ -45,9 +41,7 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : isLanding
-            ? "bg-transparent"
-            : "bg-background/80 backdrop-blur-xl border-b border-border"
+          : "bg-background/60 backdrop-blur-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,8 +55,8 @@ export function Navbar() {
             <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-primary to-primary/80">
               <Scale className="w-4 h-4 text-white" />
             </div>
-            <span className={`text-lg font-bold tracking-[-0.02em] ${showDarkNav ? "text-white" : ""}`}>
-              Legal<span className={showDarkNav ? "" : "text-primary"} style={showDarkNav ? { color: "var(--gold)" } : undefined}>Apex</span>
+            <span className="text-lg font-bold tracking-[-0.02em]">
+              Legal<span className="text-primary">Apex</span>
             </span>
           </Link>
 
@@ -73,7 +67,7 @@ export function Navbar() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className={`font-medium ${showDarkNav ? "text-white/70 no-default-hover-elevate hover:text-white" : "text-muted-foreground"}`}
+                    className="font-medium text-muted-foreground"
                     data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                   >
                     {link.label}
@@ -85,7 +79,7 @@ export function Navbar() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleNavClick(link.href)}
-                  className={`font-medium ${showDarkNav ? "text-white/70 no-default-hover-elevate hover:text-white" : "text-muted-foreground"}`}
+                  className="font-medium text-muted-foreground"
                   data-testid={`link-nav-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                 >
                   {link.label}
@@ -99,7 +93,6 @@ export function Navbar() {
               size="icon"
               variant="ghost"
               onClick={toggleTheme}
-              className={showDarkNav ? "text-white/70 no-default-hover-elevate hover:text-white" : ""}
               data-testid="button-theme-toggle"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
@@ -113,7 +106,7 @@ export function Navbar() {
               className="hidden sm:inline-flex"
               data-testid="link-nav-whatsapp"
             >
-              <Button className={showDarkNav ? "text-white" : ""} style={showDarkNav ? { backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" } : undefined} data-testid="button-nav-whatsapp">
+              <Button data-testid="button-nav-whatsapp">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Free Consultation
               </Button>
@@ -122,7 +115,7 @@ export function Navbar() {
             <Button
               size="icon"
               variant="ghost"
-              className={`md:hidden ${showDarkNav ? "text-white/70 no-default-hover-elevate hover:text-white" : ""}`}
+              className="md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               data-testid="button-mobile-menu"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}

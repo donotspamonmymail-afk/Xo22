@@ -28,10 +28,10 @@ import {
 
 const valueIcons = [Eye, Target, ShieldCheck, Heart];
 const VALUE_GRADIENTS = [
-  "var(--gradient-blue)",
-  "var(--gradient-gold)",
-  "var(--gradient-teal)",
-  "var(--gradient-green)",
+  "var(--gradient-1)",
+  "var(--gradient-2)",
+  "var(--gradient-3)",
+  "var(--gradient-4)",
 ];
 
 const statIcons = [Briefcase, Star, Award, Clock];
@@ -48,21 +48,7 @@ export default function About() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div
-          className="relative py-20 md:py-28"
-          style={{
-            backgroundColor: "var(--hero-bg)",
-            background:
-              `linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-bg-alt) 50%, var(--hero-bg) 100%)`,
-          }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                `radial-gradient(ellipse 50% 50% at 70% 50%, var(--hero-glow-primary), transparent 70%)`,
-            }}
-          />
+        <div className="relative py-20 md:py-28 bg-muted/50">
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -72,24 +58,19 @@ export default function About() {
               data-testid="section-about-hero"
             >
               <Badge
+                variant="secondary"
                 className="mb-5 px-3 py-1 text-xs"
-                style={{
-                  backgroundColor: "var(--hero-badge-bg)",
-                  borderColor: "var(--hero-badge-border)",
-                  color: "var(--hero-badge-text)",
-                }}
               >
                 About LegalApex
               </Badge>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-5 text-white"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-5"
                 data-testid="text-about-hero-title"
               >
                 {config.heroTitle}
               </h1>
               <p
-                className="text-base sm:text-lg leading-relaxed"
-                style={{ color: "var(--hero-text-muted)" }}
+                className="text-base sm:text-lg leading-relaxed text-muted-foreground"
                 data-testid="text-about-hero-description"
               >
                 {config.heroDescription}
@@ -112,7 +93,7 @@ export default function About() {
                 <motion.div key={stat.key} variants={fadeUpItem}>
                   <Card data-testid={`card-stat-${stat.key}`}>
                     <CardContent className="p-5 text-center">
-                      <Icon className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--blue)" }} />
+                      <Icon className="w-5 h-5 mx-auto mb-2 text-primary" />
                       <p className="text-2xl sm:text-3xl font-bold mb-0.5">
                         {stat.value}
                       </p>
@@ -159,7 +140,7 @@ export default function About() {
                   <div
                     className="flex items-center justify-center w-10 h-10 rounded-lg mb-4"
                     style={{
-                      background: "var(--gradient-blue)",
+                      background: "var(--gradient-1)",
                     }}
                   >
                     <Users className="w-5 h-5 text-white" />
@@ -265,23 +246,16 @@ export default function About() {
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
-                          className="w-3.5 h-3.5"
-                          style={{
-                            fill:
-                              i < testimonial.rating ? "var(--gold)" : "transparent",
-                            color:
-                              i < testimonial.rating
-                                ? "var(--gold)"
-                                : "hsl(var(--muted-foreground))",
-                          }}
+                          className={`w-3.5 h-3.5 ${
+                            i < testimonial.rating
+                              ? "fill-amber-400 text-amber-400"
+                              : "text-muted-foreground"
+                          }`}
                         />
                       ))}
                     </div>
                     <div className="relative mb-3">
-                      <Quote
-                        className="absolute -top-0.5 -left-0.5 w-5 h-5 opacity-10"
-                        style={{ color: "var(--blue)" }}
-                      />
+                      <Quote className="absolute -top-0.5 -left-0.5 w-5 h-5 text-primary/10" />
                       <p className="text-sm leading-relaxed pl-4 line-clamp-3">
                         {testimonial.text}
                       </p>
@@ -312,23 +286,16 @@ export default function About() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-              className="rounded-xl p-8 md:p-12 text-center"
-              style={{
-                backgroundColor: "var(--hero-bg)",
-                background:
-                  `linear-gradient(135deg, var(--hero-bg), var(--hero-bg-alt))`,
-              }}
+              className="rounded-xl p-8 md:p-12 text-center text-white"
+              style={{ background: "var(--cta-bg)" }}
             >
               <h2
-                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4 text-white"
+                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4"
                 data-testid="text-about-cta-heading"
               >
                 Ready to Get Started?
               </h2>
-              <p
-                className="mb-6 max-w-xl mx-auto text-sm"
-                style={{ color: "var(--hero-text-muted)" }}
-              >
+              <p className="mb-6 max-w-xl mx-auto text-sm text-white/70">
                 Get expert legal assistance today. Talk to our team on WhatsApp
                 or fill out our inquiry form.
               </p>
@@ -342,11 +309,7 @@ export default function About() {
                   data-testid="link-about-cta-whatsapp"
                 >
                   <Button
-                    style={{
-                      backgroundColor: "var(--gold)",
-                      borderColor: "var(--gold-dark)",
-                      color: "#fff",
-                    }}
+                    className="bg-white text-primary border-white/30"
                     data-testid="button-about-cta"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
@@ -356,11 +319,7 @@ export default function About() {
                 <Link href="/contact">
                   <Button
                     variant="outline"
-                    className="text-white"
-                    style={{
-                      backgroundColor: "var(--hero-glass)",
-                      borderColor: "var(--hero-glass-border)",
-                    }}
+                    className="text-white border-white/30"
                   >
                     Contact Us
                     <ArrowRight className="w-4 h-4 ml-2" />

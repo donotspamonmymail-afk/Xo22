@@ -32,31 +32,31 @@ export function PricingSection() {
                   <div
                     className="relative rounded-xl overflow-visible p-[1px]"
                     style={{
-                      background: "var(--pricing-popular-border)",
+                      background: "var(--pricing-popular-bg)",
                       boxShadow: "var(--pricing-popular-shadow-sm)"
                     }}
                     data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="px-3 py-0.5 text-[10px] text-white" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" }}>Most Popular</Badge>
+                      <Badge className="px-3 py-0.5 text-[10px] text-white bg-primary border-primary">Most Popular</Badge>
                     </div>
                     <div className="rounded-xl p-5 flex flex-col h-full" style={{ background: "var(--pricing-popular-bg)" }}>
                       <h3 className="text-base font-semibold mb-1 text-white">{plan.name}</h3>
-                      <p className="text-xs mb-3" style={{ color: "var(--hero-text-muted)" }}>{plan.description}</p>
+                      <p className="text-xs mb-3 text-white/60">{plan.description}</p>
                       <div className="mb-4">
                         <span className="text-3xl font-bold text-white">{"\u20B9"}{plan.price}</span>
-                        <span className="text-xs ml-1" style={{ color: "var(--hero-text-faint)" }}>+ onwards</span>
+                        <span className="text-xs ml-1 text-white/50">+ onwards</span>
                       </div>
                       <ul className="space-y-2 mb-4 flex-1">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-xs" style={{ color: "var(--hero-badge-text)" }}>
-                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
+                          <li key={feature} className="flex items-start gap-2 text-xs text-white/80">
+                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-white/70" />
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
                       <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
-                        <Button className="w-full" size="sm" style={{ backgroundColor: "#ffffff", color: "var(--blue)" }} data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
+                        <Button className="w-full bg-white text-primary border-white/80" size="sm" data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
                           <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
                           Get Started
                         </Button>
@@ -109,45 +109,33 @@ export function PricingSection() {
                 <div
                   className="relative rounded-xl overflow-visible p-[1px]"
                   style={{
-                    background: "var(--pricing-popular-border)",
+                    background: "var(--pricing-popular-bg)",
                     boxShadow: "var(--pricing-popular-shadow)"
                   }}
                   data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                 >
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                    <Badge className="px-4 py-1 text-xs text-white" style={{ backgroundColor: "var(--gold)", borderColor: "var(--gold-dark)" }}>Most Popular</Badge>
+                    <Badge className="px-4 py-1 text-xs text-white bg-primary border-primary">Most Popular</Badge>
                   </div>
-                  <div
-                    className="rounded-xl p-6 flex flex-col h-full"
-                    style={{ background: "var(--pricing-popular-bg)" }}
-                  >
+                  <div className="rounded-xl p-6 flex flex-col h-full" style={{ background: "var(--pricing-popular-bg)" }}>
                     <h3 className="text-lg font-semibold mb-1 text-white">{plan.name}</h3>
-                    <p className="text-sm mb-4" style={{ color: "var(--hero-text-muted)" }}>{plan.description}</p>
+                    <p className="text-sm mb-4 text-white/60">{plan.description}</p>
                     <div className="mb-6">
                       <span className="text-4xl font-bold text-white">{"\u20B9"}{plan.price}</span>
-                      <span className="text-sm ml-1" style={{ color: "var(--hero-text-faint)" }}>+ onwards</span>
+                      <span className="text-sm ml-1 text-white/50">+ onwards</span>
                     </div>
                     <ul className="space-y-3 mb-6 flex-1">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--hero-badge-text)" }}>
-                          <div className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5" style={{ backgroundColor: "var(--hero-glass)" }}>
-                            <Check className="w-3 h-3" style={{ color: "var(--gold)" }} />
+                        <li key={feature} className="flex items-start gap-2.5 text-sm text-white/80">
+                          <div className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5 bg-white/10">
+                            <Check className="w-3 h-3 text-white/80" />
                           </div>
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href={getPricingWhatsAppLink(plan.name, plan.price)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <Button
-                        className="w-full"
-                        style={{ backgroundColor: "#ffffff", color: "var(--blue)", borderColor: "rgba(255,255,255,0.8)" }}
-                        data-testid={`button-pricing-${plan.name.toLowerCase()}`}
-                      >
+                    <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block">
+                      <Button className="w-full bg-white text-primary border-white/80" data-testid={`button-pricing-${plan.name.toLowerCase()}`}>
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Get Started
                       </Button>
@@ -173,17 +161,8 @@ export function PricingSection() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href={getPricingWhatsAppLink(plan.name, plan.price)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <Button
-                        className="w-full"
-                        variant="outline"
-                        data-testid={`button-pricing-${plan.name.toLowerCase()}`}
-                      >
+                    <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block">
+                      <Button className="w-full" variant="outline" data-testid={`button-pricing-${plan.name.toLowerCase()}`}>
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Get Started
                       </Button>
