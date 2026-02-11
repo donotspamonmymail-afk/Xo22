@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
-import { Sun, Moon, Menu, X, Scale, MessageCircle } from "lucide-react";
-import { getWhatsAppLink } from "@/lib/whatsapp";
+import { Sun, Moon, Menu, X, Scale } from "lucide-react";
 import { SITE, NAV_LINKS } from "@/lib/site-data";
 
 export function Navbar() {
@@ -98,19 +97,6 @@ export function Navbar() {
             >
               {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
-
-            <a
-              href={getWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex"
-              data-testid="link-nav-whatsapp"
-            >
-              <Button data-testid="button-nav-whatsapp">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Free Consultation
-              </Button>
-            </a>
 
             <Button
               size="icon"
