@@ -16,7 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
-import { sectionVariants } from "@/lib/motion";
+import { sectionVariants, staggerContainer, fadeUpItem } from "@/lib/motion";
 import {
   Check,
   FileText,
@@ -25,6 +25,8 @@ import {
   Clock,
   ArrowRight,
   BookOpen,
+  Shield,
+  Phone,
 } from "lucide-react";
 import NotFound from "@/pages/not-found";
 
@@ -45,7 +47,10 @@ export default function ServiceDetail() {
     return <NotFound />;
   }
 
-  const whatsappLink = getServiceWhatsAppLink(serviceConfig.title, serviceConfig.price);
+  const whatsappLink = getServiceWhatsAppLink(
+    serviceConfig.title,
+    serviceConfig.price
+  );
   const relatedBlogs = BLOG_POSTS_CONFIG.filter((b) =>
     detail.relatedBlogSlugs.includes(b.slug)
   );
@@ -55,347 +60,414 @@ export default function ServiceDetail() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="pt-24 pb-20">
-        {/* Breadcrumb */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb">
-            <ol className="flex items-center gap-1 text-sm text-muted-foreground flex-wrap">
-              <li>
-                <Link href="/" data-testid="link-breadcrumb-home">
-                  <Button variant="ghost" size="sm" className="text-muted-foreground font-normal">
-                    Home
-                  </Button>
-                </Link>
-              </li>
-              <li><ChevronRight className="w-3.5 h-3.5" /></li>
-              <li>
-                <Link href="/#services" data-testid="link-breadcrumb-services">
-                  <Button variant="ghost" size="sm" className="text-muted-foreground font-normal">
-                    Services
-                  </Button>
-                </Link>
-              </li>
-              <li><ChevronRight className="w-3.5 h-3.5" /></li>
-              <li>
-                <span className="font-medium text-foreground px-3 py-1" data-testid="text-breadcrumb-current">
-                  {serviceConfig.title}
-                </span>
-              </li>
-            </ol>
-          </nav>
-        </div>
-
-        {/* Hero Section */}
-        <motion.section
-          className="py-24 md:py-32"
-          initial="hidden"
-          animate="visible"
-          variants={sectionVariants}
-          data-testid="section-service-hero"
-          aria-labelledby="service-hero-heading"
+      <main className="pt-20 pb-20">
+        <div
+          className="relative py-16 md:py-24"
+          style={{
+            backgroundColor: "#0d1020",
+            background:
+              "linear-gradient(135deg, #0d1020 0%, #1a2040 50%, #0d1020 100%)",
+          }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 50% 50% at 30% 50%, rgba(47,68,160,0.20), transparent 70%)",
+            }}
+          />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb" className="mb-6">
+              <ol className="flex items-center gap-1.5 text-sm flex-wrap" style={{ color: "rgba(255,255,255,0.5)" }}>
+                <li>
+                  <Link href="/" className="hover:text-white transition-colors" data-testid="link-breadcrumb-home">
+                    Home
+                  </Link>
+                </li>
+                <li><ChevronRight className="w-3 h-3" /></li>
+                <li>
+                  <Link href="/#services" className="hover:text-white transition-colors" data-testid="link-breadcrumb-services">
+                    Services
+                  </Link>
+                </li>
+                <li><ChevronRight className="w-3 h-3" /></li>
+                <li>
+                  <span className="text-white font-medium" data-testid="text-breadcrumb-current">
+                    {serviceConfig.title}
+                  </span>
+                </li>
+              </ol>
+            </nav>
+
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={sectionVariants}
+              className="max-w-3xl"
+              data-testid="section-service-hero"
+            >
               {ServiceIcon && (
-                <div className="flex items-center justify-center w-12 h-12 rounded-md bg-primary/10 mb-6">
-                  <ServiceIcon className="w-6 h-6 text-primary" />
+                <div
+                  className="flex items-center justify-center w-12 h-12 rounded-lg mb-5"
+                  style={{
+                    background: "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                  }}
+                >
+                  <ServiceIcon className="w-6 h-6 text-white" />
                 </div>
               )}
               <h1
-                id="service-hero-heading"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
                 data-testid="text-service-hero-title"
               >
                 {detail.heroTitle}
               </h1>
               <p
-                className="text-lg text-muted-foreground leading-relaxed mb-8"
+                className="text-base sm:text-lg leading-relaxed mb-6"
+                style={{ color: "rgba(255,255,255,0.6)" }}
                 data-testid="text-service-hero-description"
               >
                 {detail.heroDescription}
               </p>
               <div className="flex items-center gap-4 flex-wrap">
-                <span className="text-2xl font-bold" data-testid="text-service-price">
-                  Starting from <span className="text-primary">{"\u20B9"}{serviceConfig.price}</span>
-                </span>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="link-service-hero-whatsapp"
-                >
-                  <Button data-testid="button-service-hero-cta">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Get Free Consultation
-                  </Button>
-                </a>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-white" data-testid="text-service-price">
+                    {"\u20B9"}{serviceConfig.price}
+                  </span>
+                  <span className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>onwards</span>
+                </div>
+                <Badge className="text-xs" style={{ backgroundColor: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)" }}>
+                  <Clock className="w-3 h-3 mr-1" />
+                  {detail.timeline}
+                </Badge>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.section>
+        </div>
 
-        {/* What's Included */}
-        <motion.section
-          className="py-24 md:py-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={sectionVariants}
-          data-testid="section-whats-included"
-          aria-labelledby="whats-included-heading"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              id="whats-included-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
-              data-testid="text-whats-included-heading"
-            >
-              What's Included
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {detail.whatsIncluded.map((item, i) => (
-                <Card key={i} className="hover-elevate" data-testid={`card-included-${i}`}>
-                  <CardContent className="p-4 flex items-start gap-3">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="text-sm leading-relaxed" data-testid={`text-included-${i}`}>
-                      {item}
-                    </span>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Documents Required */}
-        <motion.section
-          className="py-24 md:py-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={sectionVariants}
-          data-testid="section-documents-required"
-          aria-labelledby="documents-heading"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              id="documents-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
-              data-testid="text-documents-heading"
-            >
-              Documents Required
-            </h2>
-            <Card data-testid="card-documents">
-              <CardContent className="p-6">
-                <ul className="space-y-3">
-                  {detail.documentsRequired.map((doc, i) => (
-                    <li key={i} className="flex items-start gap-3" data-testid={`text-document-${i}`}>
-                      <FileText className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                      <span className="text-sm leading-relaxed">{doc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </motion.section>
-
-        {/* Process Steps */}
-        <motion.section
-          className="py-24 md:py-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={sectionVariants}
-          data-testid="section-process-steps"
-          aria-labelledby="process-heading"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between gap-4 flex-wrap mb-8">
-              <h2
-                id="process-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em]"
-                data-testid="text-process-heading"
-              >
-                How It Works
-              </h2>
-              <Badge variant="secondary" data-testid="badge-timeline">
-                <Clock className="w-3.5 h-3.5 mr-1.5" />
-                {detail.timeline}
-              </Badge>
-            </div>
-            <div className="space-y-4">
-              {detail.processSteps.map((step, i) => (
-                <Card key={i} data-testid={`card-step-${i}`}>
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 flex-shrink-0">
-                      <span className="text-sm font-bold text-primary">{String(i + 1).padStart(2, "0")}</span>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1" data-testid={`text-step-title-${i}`}>
-                        {step.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-step-desc-${i}`}>
-                        {step.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* FAQ */}
-        {detail.faqs.length > 0 && (
-          <motion.section
-            className="py-24 md:py-32"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={sectionVariants}
-            data-testid="section-service-faq"
-            aria-labelledby="service-faq-heading"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2
-                id="service-faq-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
-                data-testid="text-service-faq-heading"
-              >
-                Frequently Asked Questions
-              </h2>
-              <Card data-testid="card-service-faq">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="lg:col-span-2 space-y-6">
+              <Card data-testid="section-whats-included">
                 <CardContent className="p-6">
-                  <Accordion type="single" collapsible>
-                    {detail.faqs.map((faq, i) => (
-                      <AccordionItem key={i} value={`faq-${i}`} data-testid={`accordion-faq-${i}`}>
-                        <AccordionTrigger
-                          className="text-left text-sm"
-                          data-testid={`button-faq-trigger-${i}`}
+                  <h2
+                    className="text-lg font-bold mb-4"
+                    data-testid="text-whats-included-heading"
+                  >
+                    What's Included
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {detail.whatsIncluded.map((item, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-2.5"
+                        data-testid={`card-included-${i}`}
+                      >
+                        <div
+                          className="flex items-center justify-center w-5 h-5 rounded-full flex-shrink-0 mt-0.5"
+                          style={{
+                            backgroundColor: "rgba(45,153,104,0.1)",
+                          }}
                         >
-                          {faq.question}
-                        </AccordionTrigger>
-                        <AccordionContent data-testid={`text-faq-answer-${i}`}>
-                          <p className="text-muted-foreground leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </AccordionContent>
-                      </AccordionItem>
+                          <Check
+                            className="w-3 h-3"
+                            style={{ color: "#2d9968" }}
+                          />
+                        </div>
+                        <span
+                          className="text-sm leading-relaxed"
+                          data-testid={`text-included-${i}`}
+                        >
+                          {item}
+                        </span>
+                      </div>
                     ))}
-                  </Accordion>
+                  </div>
                 </CardContent>
               </Card>
-            </div>
-          </motion.section>
-        )}
 
-        {/* Related Blog Posts */}
-        {relatedBlogs.length > 0 && (
-          <motion.section
-            className="py-24 md:py-32"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={sectionVariants}
-            data-testid="section-related-blogs"
-            aria-labelledby="related-blogs-heading"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2
-                id="related-blogs-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
-                data-testid="text-related-blogs-heading"
-              >
-                Related Articles
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {relatedBlogs.map((blog) => (
-                  <Link
-                    key={blog.slug}
-                    href={`/blog/${blog.slug}`}
-                    data-testid={`link-related-blog-${blog.slug}`}
+              <Card data-testid="section-documents-required">
+                <CardContent className="p-6">
+                  <h2
+                    className="text-lg font-bold mb-4"
+                    data-testid="text-documents-heading"
                   >
-                    <Card className="h-full hover-elevate" data-testid={`card-related-blog-${blog.slug}`}>
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <BookOpen className="w-4 h-4 text-primary" />
-                          <Badge variant="secondary">{blog.category}</Badge>
+                    Documents Required
+                  </h2>
+                  <ul className="space-y-2.5">
+                    {detail.documentsRequired.map((doc, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5"
+                        data-testid={`text-document-${i}`}
+                      >
+                        <FileText className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-sm leading-relaxed">{doc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card data-testid="section-process-steps">
+                <CardContent className="p-6">
+                  <h2
+                    className="text-lg font-bold mb-4"
+                    data-testid="text-process-heading"
+                  >
+                    How It Works
+                  </h2>
+                  <div className="space-y-0">
+                    {detail.processSteps.map((step, i) => (
+                      <div
+                        key={i}
+                        className="flex gap-4"
+                        data-testid={`card-step-${i}`}
+                      >
+                        <div className="flex flex-col items-center">
+                          <div
+                            className="flex items-center justify-center w-8 h-8 rounded-full flex-shrink-0 text-xs font-bold text-white"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #2f44a0, #4a62c4)",
+                            }}
+                          >
+                            {i + 1}
+                          </div>
+                          {i < detail.processSteps.length - 1 && (
+                            <div className="w-px flex-1 min-h-[24px] bg-border my-1" />
+                          )}
                         </div>
-                        <h3 className="font-semibold mb-2 text-sm" data-testid={`text-related-blog-title-${blog.slug}`}>
-                          {blog.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                          {blog.excerpt}
-                        </p>
-                        <div className="flex items-center gap-1 mt-3 text-primary text-xs font-medium">
-                          Read More <ArrowRight className="w-3 h-3" />
+                        <div className="pb-6">
+                          <h3
+                            className="font-semibold text-sm mb-1"
+                            data-testid={`text-step-title-${i}`}
+                          >
+                            {step.title}
+                          </h3>
+                          <p
+                            className="text-sm text-muted-foreground leading-relaxed"
+                            data-testid={`text-step-desc-${i}`}
+                          >
+                            {step.description}
+                          </p>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {detail.faqs.length > 0 && (
+                <Card data-testid="section-service-faq">
+                  <CardContent className="p-6">
+                    <h2
+                      className="text-lg font-bold mb-4"
+                      data-testid="text-service-faq-heading"
+                    >
+                      Frequently Asked Questions
+                    </h2>
+                    <Accordion type="single" collapsible>
+                      {detail.faqs.map((faq, i) => (
+                        <AccordionItem
+                          key={i}
+                          value={`faq-${i}`}
+                          data-testid={`accordion-faq-${i}`}
+                        >
+                          <AccordionTrigger
+                            className="text-left text-sm"
+                            data-testid={`button-faq-trigger-${i}`}
+                          >
+                            {faq.question}
+                          </AccordionTrigger>
+                          <AccordionContent
+                            data-testid={`text-faq-answer-${i}`}
+                          >
+                            <p className="text-muted-foreground leading-relaxed">
+                              {faq.answer}
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </CardContent>
+                </Card>
+              )}
+
+              {relatedBlogs.length > 0 && (
+                <div data-testid="section-related-blogs">
+                  <h2
+                    className="text-lg font-bold mb-4"
+                    data-testid="text-related-blogs-heading"
+                  >
+                    Related Articles
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {relatedBlogs.map((blog) => (
+                      <Link
+                        key={blog.slug}
+                        href={`/blog/${blog.slug}`}
+                        data-testid={`link-related-blog-${blog.slug}`}
+                      >
+                        <Card
+                          className="h-full hover-elevate overflow-visible"
+                          data-testid={`card-related-blog-${blog.slug}`}
+                        >
+                          <CardContent className="p-5">
+                            <div className="flex items-center gap-2 mb-2">
+                              <BookOpen className="w-3.5 h-3.5 text-primary" />
+                              <Badge variant="secondary" className="text-xs">
+                                {blog.category}
+                              </Badge>
+                            </div>
+                            <h3
+                              className="font-semibold text-sm mb-1.5"
+                              data-testid={`text-related-blog-title-${blog.slug}`}
+                            >
+                              {blog.title}
+                            </h3>
+                            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                              {blog.excerpt}
+                            </p>
+                            <div className="flex items-center gap-1 mt-2 text-primary text-xs font-medium">
+                              Read More <ArrowRight className="w-3 h-3" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="lg:col-span-1">
+              <div className="lg:sticky lg:top-24 space-y-4">
+                <Card data-testid="card-pricing-sidebar">
+                  <CardContent className="p-6">
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      Get Started
+                    </h3>
+                    <div className="mb-4">
+                      <span className="text-3xl font-bold">
+                        {"\u20B9"}{serviceConfig.price}
+                      </span>
+                      <span className="text-sm text-muted-foreground ml-1">
+                        onwards
+                      </span>
+                    </div>
+                    <ul className="space-y-2.5 mb-5">
+                      <li className="flex items-center gap-2 text-sm">
+                        <Check className="w-4 h-4" style={{ color: "#2d9968" }} />
+                        Expert legal assistance
+                      </li>
+                      <li className="flex items-center gap-2 text-sm">
+                        <Check className="w-4 h-4" style={{ color: "#2d9968" }} />
+                        Complete document handling
+                      </li>
+                      <li className="flex items-center gap-2 text-sm">
+                        <Clock className="w-4 h-4 text-primary" />
+                        {detail.timeline}
+                      </li>
+                      <li className="flex items-center gap-2 text-sm">
+                        <Shield className="w-4 h-4" style={{ color: "#d4a434" }} />
+                        Money-back guarantee
+                      </li>
+                    </ul>
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                      data-testid="link-service-hero-whatsapp"
+                    >
+                      <Button
+                        className="w-full mb-2"
+                        data-testid="button-service-hero-cta"
+                      >
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Get Free Consultation
+                      </Button>
+                    </a>
+                    <a href="/contact" className="block">
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        data-testid="button-service-contact"
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        Contact Us
+                      </Button>
+                    </a>
+                    <p className="text-xs text-muted-foreground text-center mt-3">
+                      Free consultation. No obligation.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className="flex items-center justify-center w-8 h-8 rounded-full"
+                        style={{ backgroundColor: "rgba(47,68,160,0.08)" }}
+                      >
+                        <Shield className="w-4 h-4" style={{ color: "#2f44a0" }} />
+                      </div>
+                      <h4 className="text-sm font-semibold">Our Guarantee</h4>
+                    </div>
+                    <ul className="space-y-2 text-xs text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        7-day money-back guarantee
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        100% confidential handling
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        Verified legal professionals
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Check className="w-3 h-3 mt-0.5 flex-shrink-0" style={{ color: "#2d9968" }} />
+                        Dedicated support via WhatsApp
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-          </motion.section>
-        )}
-
-        {/* CTA Section */}
-        <motion.section
-          className="py-24 md:py-32"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={sectionVariants}
-          data-testid="section-service-cta"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Card data-testid="card-service-cta">
-              <CardContent className="p-8 md:p-12 text-center">
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4" data-testid="text-service-cta-heading">
-                  Ready to Get Started with {serviceConfig.title}?
-                </h2>
-                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                  Get expert assistance today. Talk to our team on WhatsApp and get a free consultation.
-                </p>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="link-service-cta-whatsapp"
-                >
-                  <Button size="lg" data-testid="button-service-cta">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Get Free Consultation
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
           </div>
-        </motion.section>
+        </div>
       </main>
 
       <FooterSection />
 
-      {/* Sticky bottom CTA bar (mobile) */}
       <div
         className="fixed bottom-0 left-0 right-0 z-40 md:hidden border-t border-border bg-background/95 backdrop-blur-xl p-3"
         data-testid="sticky-mobile-cta"
       >
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-          data-testid="link-sticky-whatsapp"
-        >
-          <Button className="w-full" data-testid="button-sticky-cta">
-            <MessageCircle className="w-4 h-4 mr-2" />
-            Get Free Consultation
-          </Button>
-        </a>
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <span className="text-xs text-muted-foreground">Starting from</span>
+            <p className="text-lg font-bold leading-tight">
+              {"\u20B9"}{serviceConfig.price}
+            </p>
+          </div>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1"
+            data-testid="link-sticky-whatsapp"
+          >
+            <Button className="w-full" data-testid="button-sticky-cta">
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Get Started
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
   );

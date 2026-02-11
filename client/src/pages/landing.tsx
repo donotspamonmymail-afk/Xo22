@@ -4,6 +4,8 @@ import { ServicesSection } from "@/components/services-section";
 import { PricingSection } from "@/components/pricing-section";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { WhySection } from "@/components/why-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { TrustGuaranteesSection } from "@/components/trust-guarantees-section";
 import { FaqSection } from "@/components/faq-section";
 import { CitiesBar } from "@/components/cities-bar";
 import { CtaBanner } from "@/components/cta-banner";
@@ -25,9 +27,11 @@ export default function Landing() {
       <Navbar />
       <main id="main-content">
         <HeroSection />
+        <TrustGuaranteesSection />
         <ServicesSection />
-        <PricingSection />
         <HowItWorksSection />
+        <PricingSection />
+        <TestimonialsSection />
         <WhySection />
         <FaqSection />
         <CitiesBar />

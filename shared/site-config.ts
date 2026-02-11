@@ -280,6 +280,80 @@ export const SEO_KEYWORDS = [
   "legalapex.in",
 ] as const;
 
+export const TESTIMONIALS_CONFIG = [
+  {
+    name: "Rahul Mehta",
+    location: "Mumbai, Maharashtra",
+    service: "Company Registration",
+    rating: 5,
+    text: "Got my Pvt Ltd company registered in just 8 days. The team handled everything from DSC to PAN and TAN. Very professional and transparent throughout the process.",
+    date: "2025-11-15",
+  },
+  {
+    name: "Priya Sharma",
+    location: "Delhi NCR",
+    service: "Name Change",
+    rating: 5,
+    text: "Needed a name change after marriage. LegalApex handled the gazette notification, affidavit, and newspaper publication. Received all documents within a week. Highly recommend!",
+    date: "2025-12-02",
+  },
+  {
+    name: "Vikram Patel",
+    location: "Ahmedabad, Gujarat",
+    service: "GST Registration",
+    rating: 5,
+    text: "Quick and hassle-free GST registration for my e-commerce business. They prepared all the documents and got me the GSTIN in 4 working days. Great value for money.",
+    date: "2026-01-10",
+  },
+  {
+    name: "Ananya Reddy",
+    location: "Hyderabad, Telangana",
+    service: "Trademark Filing",
+    rating: 5,
+    text: "Filed trademark for my brand logo and name. The team did a thorough search before filing, explained everything clearly, and kept me updated at every step. Very professional.",
+    date: "2025-10-20",
+  },
+  {
+    name: "Suresh Kumar",
+    location: "Bangalore, Karnataka",
+    service: "ITR Filing",
+    rating: 4,
+    text: "Used their premium plan for ITR filing with capital gains. The CA was very thorough and helped me claim all eligible deductions. Will definitely use again next year.",
+    date: "2026-01-25",
+  },
+  {
+    name: "Deepika Nair",
+    location: "Kochi, Kerala",
+    service: "ISO Certification",
+    rating: 5,
+    text: "Got ISO 9001:2015 certification for our manufacturing unit. The process was smooth and the team coordinated the entire audit process. Very impressed with the turnaround time.",
+    date: "2025-09-18",
+  },
+] as const;
+
+export const TRUST_GUARANTEES_CONFIG = [
+  {
+    title: "Money-Back Guarantee",
+    description: "Not satisfied? Get a full refund within 7 days of service initiation, no questions asked.",
+    key: "money-back",
+  },
+  {
+    title: "Secure & Confidential",
+    description: "Your documents and data are encrypted and handled with strict confidentiality protocols.",
+    key: "secure",
+  },
+  {
+    title: "Govt Registered Platform",
+    description: "We are a registered entity operating under Indian law with full compliance and transparency.",
+    key: "registered",
+  },
+  {
+    title: "Verified Professionals",
+    description: "Every legal expert on our platform is verified with valid bar council or CA registration.",
+    key: "verified",
+  },
+] as const;
+
 export const STATS_CONFIG = [
   { label: "Clients Served", value: "127+", key: "clients" },
   { label: "Google Rating", value: "4.8", key: "rating" },
