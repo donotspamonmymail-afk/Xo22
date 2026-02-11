@@ -108,7 +108,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="grid grid-cols-4 gap-2 sm:gap-4 max-w-2xl mx-auto mb-8 sm:mb-14"
+            className="grid grid-cols-4 gap-1.5 sm:gap-4 max-w-2xl mx-auto mb-6 sm:mb-14"
             data-testid="stats-bar"
           >
             {STATS.map((stat) => {
@@ -116,12 +116,12 @@ export function HeroSection() {
               return (
                 <div
                   key={stat.key}
-                  className="flex flex-col items-center gap-1 p-2 sm:p-4 rounded-md bg-card border border-border"
+                  className="flex flex-col items-center gap-0.5 p-1.5 sm:p-4 rounded-md bg-card border border-border"
                   data-testid={`stat-${stat.key}`}
                 >
                   <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden sm:block text-primary" />
-                  <span className="text-lg sm:text-3xl font-extrabold tracking-tight">{stat.value}</span>
-                  <span className="text-[9px] sm:text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{stat.label}</span>
+                  <span className="text-base sm:text-3xl font-extrabold tracking-tight">{stat.value}</span>
+                  <span className="text-[8px] sm:text-[11px] font-medium uppercase tracking-wider text-muted-foreground leading-tight">{stat.label}</span>
                 </div>
               );
             })}
