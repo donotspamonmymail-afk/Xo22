@@ -37,19 +37,19 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="border-t border-border bg-card" data-testid="section-footer" role="contentinfo">
+    <footer className="border-t border-border text-white" style={{ backgroundColor: "#0d1020" }} data-testid="section-footer" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-home" aria-label={`${SITE.name} - Go to homepage`}>
-              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary">
-                <Scale className="w-4 h-4 text-primary-foreground" />
+              <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-primary to-primary/80">
+                <Scale className="w-4 h-4 text-white" />
               </div>
-              <span className="text-lg font-bold tracking-[-0.02em]">
-                Legal<span className="text-primary">Apex</span>
+              <span className="text-lg font-bold tracking-[-0.02em] text-white">
+                Legal<span className="text-[hsl(36,80%,60%)]">Apex</span>
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-xs">
+            <p className="text-sm text-white/50 leading-relaxed mb-4 max-w-xs">
               {SITE.tagline} {SITE.description.split(".")[0]}.
             </p>
             <div className="flex flex-col gap-1">
@@ -59,19 +59,19 @@ export function FooterSection() {
                 rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
               >
-                <Button variant="ghost" size="sm" className="justify-start text-muted-foreground">
+                <Button variant="ghost" size="sm" className="justify-start text-white/50 no-default-hover-elevate hover:text-white">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Chat with Us
                 </Button>
               </a>
               <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} data-testid="link-footer-phone">
-                <Button variant="ghost" size="sm" className="justify-start text-muted-foreground">
+                <Button variant="ghost" size="sm" className="justify-start text-white/50 no-default-hover-elevate hover:text-white">
                   <Phone className="w-4 h-4 mr-2" />
                   {SITE.phone}
                 </Button>
               </a>
               <a href={`mailto:${SITE.email}`} data-testid="link-footer-email">
-                <Button variant="ghost" size="sm" className="justify-start text-muted-foreground">
+                <Button variant="ghost" size="sm" className="justify-start text-white/50 no-default-hover-elevate hover:text-white">
                   <Mail className="w-4 h-4 mr-2" />
                   {SITE.email}
                 </Button>
@@ -80,7 +80,7 @@ export function FooterSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Services</h4>
+            <h4 className="text-sm font-semibold mb-4 text-white/80">Services</h4>
             <ul className="space-y-1">
               {SERVICES.map((service) => (
                 <li key={service.slug}>
@@ -88,7 +88,7 @@ export function FooterSection() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="justify-start text-muted-foreground font-normal"
+                      className="justify-start text-white/40 font-normal no-default-hover-elevate hover:text-white"
                       data-testid={`link-footer-service-${service.slug}`}
                     >
                       {service.title}
@@ -100,7 +100,7 @@ export function FooterSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Company</h4>
+            <h4 className="text-sm font-semibold mb-4 text-white/80">Company</h4>
             <ul className="space-y-1">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.href}>
@@ -109,7 +109,7 @@ export function FooterSection() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="justify-start text-muted-foreground font-normal"
+                        className="justify-start text-white/40 font-normal no-default-hover-elevate hover:text-white"
                         data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                       >
                         {link.label}
@@ -119,7 +119,7 @@ export function FooterSection() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="justify-start text-muted-foreground font-normal"
+                      className="justify-start text-white/40 font-normal no-default-hover-elevate hover:text-white"
                       onClick={() => handleHashClick(link.href)}
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                     >
@@ -132,7 +132,7 @@ export function FooterSection() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">Legal</h4>
+            <h4 className="text-sm font-semibold mb-4 text-white/80">Legal</h4>
             <ul className="space-y-1">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
@@ -140,7 +140,7 @@ export function FooterSection() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="justify-start text-muted-foreground font-normal"
+                      className="justify-start text-white/40 font-normal no-default-hover-elevate hover:text-white"
                       data-testid={`link-footer-${link.label.toLowerCase().replace(/\s/g, "-")}`}
                     >
                       {link.label}
@@ -152,11 +152,11 @@ export function FooterSection() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border">
-          <p className="text-xs text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto" data-testid="text-disclaimer">
+        <div className="mt-10 pt-6 border-t border-white/10">
+          <p className="text-xs text-white/30 leading-relaxed text-center max-w-3xl mx-auto" data-testid="text-disclaimer">
             {SITE.disclaimer}
           </p>
-          <p className="text-xs text-muted-foreground text-center mt-3" data-testid="text-copyright">
+          <p className="text-xs text-white/30 text-center mt-3" data-testid="text-copyright">
             &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
         </div>

@@ -33,12 +33,12 @@ export function HowItWorksSection() {
               data-testid={`step-${step.number}`}
             >
               {index < HOW_IT_WORKS_STEPS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] border-t-2 border-dashed border-border" />
+                <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] border-t-2 border-dashed border-primary/20" />
               )}
-              <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-5">
-                <step.icon className="w-7 h-7 text-primary" />
-                <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-primary-foreground">{step.number}</span>
+              <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/5 mb-5 border border-primary/10">
+                <step.icon className="w-8 h-8 text-primary" />
+                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, #2f44a0, #4a62c4)", boxShadow: "0 4px 12px rgba(47,68,160,0.3)" }}>
+                  <span className="text-xs font-bold text-white">{step.number}</span>
                 </div>
               </div>
               <h3 className="text-base font-semibold mb-2">{step.title}</h3>

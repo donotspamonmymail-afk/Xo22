@@ -7,6 +7,15 @@ import { motion } from "framer-motion";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
 import { SERVICES } from "@/lib/site-data";
 
+const ACCENT_GRADIENTS = [
+  "linear-gradient(135deg, #2f44a0, #4a62c4)",
+  "linear-gradient(135deg, #d4a434, #e8c46a)",
+  "linear-gradient(135deg, #2a8db5, #4ab0d4)",
+  "linear-gradient(135deg, #2d9968, #48b882)",
+  "linear-gradient(135deg, #7c47b3, #9a6bcc)",
+  "linear-gradient(135deg, #2f44a0, #d4a434)",
+];
+
 export function ServicesSection() {
   return (
     <section id="services" className="py-24 md:py-32" data-testid="section-services" aria-labelledby="services-heading">
@@ -29,24 +38,28 @@ export function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
         >
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, index) => (
             <motion.div key={service.slug} variants={fadeUpItem}>
-              <Card className="h-full hover-elevate" data-testid={`card-service-${service.slug}`}>
+              <Card className="h-full hover-elevate overflow-visible group" data-testid={`card-service-${service.slug}`}>
+                <div className="h-1 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
                 <CardContent className="p-6 flex flex-col h-full">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 mb-4">
-                    <service.icon className="w-5 h-5 text-primary" />
+                  <div
+                    className="flex items-center justify-center w-11 h-11 rounded-lg mb-4"
+                    style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
+                  >
+                    <service.icon className="w-5 h-5 text-white" />
                   </div>
                   <Link href={`/services/${service.slug}`} data-testid={`link-service-title-${service.slug}`}>
-                    <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
                   </Link>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     {service.description}
                   </p>
-                  <div className="flex items-center justify-between gap-3 flex-wrap pt-2 border-t border-border">
+                  <div className="flex items-center justify-between gap-3 flex-wrap pt-3 border-t border-border">
                     <span className="text-sm font-medium">
-                      Starting from <span className="text-primary font-bold">{"\u20B9"}{service.price}</span>
+                      From <span className="text-primary font-bold text-base">{"\u20B9"}{service.price}</span>
                     </span>
                     <div className="flex items-center gap-2">
                       <a

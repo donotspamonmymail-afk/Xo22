@@ -3,6 +3,14 @@ import { motion } from "framer-motion";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
 import { WHY_REASONS } from "@/lib/site-data";
 
+const ICON_GRADIENTS = [
+  "linear-gradient(135deg, #2f44a0, #4a62c4)",
+  "linear-gradient(135deg, #d4a434, #e8c46a)",
+  "linear-gradient(135deg, #2a8db5, #4ab0d4)",
+  "linear-gradient(135deg, #2d9968, #48b882)",
+  "linear-gradient(135deg, #7c47b3, #9a6bcc)",
+];
+
 export function WhySection() {
   return (
     <section id="why-us" className="py-24 md:py-32 bg-muted/40" data-testid="section-why-us" aria-labelledby="why-us-heading">
@@ -25,14 +33,17 @@ export function WhySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-5xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto"
         >
-          {WHY_REASONS.map((reason) => (
+          {WHY_REASONS.map((reason, index) => (
             <motion.div key={reason.title} variants={fadeUpItem}>
-              <Card className="h-full hover-elevate" data-testid={`card-why-${reason.title.toLowerCase().replace(/\s/g, "-")}`}>
+              <Card className="h-full hover-elevate overflow-visible" data-testid={`card-why-${reason.title.toLowerCase().replace(/\s/g, "-")}`}>
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-md bg-primary/10 mb-4">
-                    <reason.icon className="w-5 h-5 text-primary" />
+                  <div
+                    className="flex items-center justify-center w-11 h-11 rounded-lg mb-4"
+                    style={{ background: ICON_GRADIENTS[index % ICON_GRADIENTS.length] }}
+                  >
+                    <reason.icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-base font-semibold mb-2">{reason.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">

@@ -1,5 +1,5 @@
-import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { MapPin } from "lucide-react";
 import { CITIES } from "@/lib/site-data";
 
 export function CitiesBar() {
@@ -9,27 +9,21 @@ export function CitiesBar() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="flex items-center justify-center gap-2 mb-5">
+          <div className="flex items-center justify-center gap-2 mb-6">
             <MapPin className="w-4 h-4 text-primary" />
-            <h3 className="text-sm font-semibold text-primary tracking-wide uppercase" data-testid="text-cities-heading">
-              Trusted by Businesses Across India
-            </h3>
+            <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase">
+              Trusted Across India
+            </p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 max-w-3xl mx-auto">
             {CITIES.map((city, index) => (
-              <span
-                key={city}
-                className="text-sm text-muted-foreground font-medium"
-                data-testid={`text-city-${city.toLowerCase()}`}
-              >
+              <span key={city} className="text-sm text-muted-foreground font-medium" data-testid={`city-${index}`}>
                 {city}
-                {index < CITIES.length - 1 && (
-                  <span className="ml-3 text-border select-none" aria-hidden="true">&middot;</span>
-                )}
+                {index < CITIES.length - 1 && <span className="ml-3 text-border">|</span>}
               </span>
             ))}
           </div>
