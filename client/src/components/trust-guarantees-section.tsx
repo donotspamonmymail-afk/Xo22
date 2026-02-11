@@ -12,7 +12,7 @@ const GUARANTEE_ICONS: Record<string, typeof ShieldCheck> = {
 export function TrustGuaranteesSection() {
   return (
     <section
-      className="py-8 sm:py-16 md:py-20 border-y border-border"
+      className="py-5 sm:py-16 md:py-20 border-y border-border"
       data-testid="section-trust-guarantees"
       aria-labelledby="trust-heading"
     >
@@ -22,7 +22,7 @@ export function TrustGuaranteesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
+          className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 md:gap-8"
         >
           {TRUST_GUARANTEES_CONFIG.map((guarantee) => {
             const Icon = GUARANTEE_ICONS[guarantee.key] || ShieldCheck;
@@ -32,11 +32,11 @@ export function TrustGuaranteesSection() {
                 className="flex flex-col items-center text-center"
                 data-testid={`trust-guarantee-${guarantee.key}`}
               >
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full mb-2 sm:mb-4 bg-primary/5 dark:bg-primary/10 border border-primary/10">
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <div className="flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full mb-1.5 sm:mb-4 bg-primary/5 dark:bg-primary/10 border border-primary/10">
+                  <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-primary" />
                 </div>
                 <h3
-                  className="text-xs sm:text-sm font-semibold mb-0.5 sm:mb-1"
+                  className="text-[10px] sm:text-sm font-semibold mb-0.5 sm:mb-1 leading-tight"
                   data-testid={`text-guarantee-title-${guarantee.key}`}
                 >
                   {guarantee.title}

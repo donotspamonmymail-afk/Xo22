@@ -40,14 +40,14 @@ export function HeroSection() {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-50" style={{ background: "var(--hero-glow-2)", filter: "blur(100px)" }} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 sm:pt-36 sm:pb-24 md:pt-44 md:pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pt-36 sm:pb-24 md:pt-44 md:pb-32">
         <div className="text-center max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4 sm:mb-8" data-testid="badge-hero">
+            <Badge variant="secondary" className="mb-3 sm:mb-8" data-testid="badge-hero">
               <MapPin className="w-3 h-3 mr-1" />
               {HERO.badge}
             </Badge>
@@ -58,7 +58,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-8"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.1] mb-3 sm:mb-8"
             data-testid="text-hero-heading"
           >
             {HERO.headingStart}{" "}
@@ -69,7 +69,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed text-muted-foreground"
+            className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-5 sm:mb-12 leading-relaxed text-muted-foreground"
             data-testid="text-hero-subheading"
           >
             {HERO.subheading}
@@ -79,7 +79,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-14"
+            className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 mb-5 sm:mb-14"
           >
             <a
               href={getWhatsAppLink(HERO.defaultWhatsAppMessage)}
