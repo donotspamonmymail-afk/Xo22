@@ -37,7 +37,7 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="text-white" style={{ backgroundColor: "var(--footer-bg)" }} data-testid="section-footer" role="contentinfo">
+    <footer className="text-white" style={{ background: "var(--footer-bg)" }} data-testid="section-footer" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
         <div className="sm:hidden">
           <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-home" aria-label={`${SITE.name} - Go to homepage`}>
