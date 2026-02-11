@@ -12,7 +12,7 @@ import { CtaBanner } from "@/components/cta-banner";
 import { FooterSection } from "@/components/footer-section";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
 import { BackToTop } from "@/components/back-to-top";
-import { MobileWhatsAppCta } from "@/components/mobile-whatsapp-cta";
+
 
 export default function Landing() {
   return (
@@ -40,7 +40,6 @@ export default function Landing() {
       <FooterSection />
       <WhatsAppFab />
       <BackToTop />
-      <MobileWhatsAppCta />
     </div>
   );
 }
