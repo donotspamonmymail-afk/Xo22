@@ -24,76 +24,82 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="sm:hidden -mx-4 px-4 overflow-x-auto scrollbar-hide pb-4">
-          <div className="flex gap-3" style={{ width: "max-content" }}>
-            {PRICING_PLANS.map((plan) => (
-              <div key={plan.name} className="w-[280px] flex-shrink-0">
-                {plan.popular ? (
-                  <div
-                    className="relative rounded-xl overflow-visible p-[1px]"
-                    style={{
-                      background: "var(--pricing-popular-bg)",
-                      boxShadow: "var(--pricing-popular-shadow-sm)"
-                    }}
-                    data-testid={`card-pricing-${plan.name.toLowerCase()}`}
-                  >
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="px-3 py-0.5 text-[10px] text-white bg-primary border-primary">Most Popular</Badge>
-                    </div>
-                    <div className="rounded-xl p-5 flex flex-col h-full" style={{ background: "var(--pricing-popular-bg)" }}>
-                      <h3 className="text-base font-semibold mb-1 text-white">{plan.name}</h3>
-                      <p className="text-xs mb-3 text-white/60">{plan.description}</p>
-                      <div className="mb-4">
-                        <span className="text-3xl font-bold text-white">{"\u20B9"}{plan.price}</span>
-                        <span className="text-xs ml-1 text-white/50">+ onwards</span>
-                      </div>
-                      <ul className="space-y-2 mb-4 flex-1">
-                        {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-xs text-white/80">
-                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-white/70" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
-                        <Button className="w-full bg-white text-primary border-white/80" size="sm" data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
-                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
-                          Get Started
-                        </Button>
-                      </a>
-                    </div>
+        <div className="sm:hidden flex flex-col gap-4 pb-4">
+          {PRICING_PLANS.map((plan) => (
+            <div key={plan.name}>
+              {plan.popular ? (
+                <div
+                  className="relative rounded-xl overflow-visible p-[1px]"
+                  style={{
+                    background: "var(--pricing-popular-bg)",
+                    boxShadow: "var(--pricing-popular-shadow-sm)"
+                  }}
+                  data-testid={`card-pricing-${plan.name.toLowerCase()}`}
+                >
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                    <Badge className="px-3 py-0.5 text-[10px] text-white bg-primary border-primary">Most Popular</Badge>
                   </div>
-                ) : (
-                  <Card className="h-full" data-testid={`card-pricing-${plan.name.toLowerCase()}`}>
-                    <CardContent className="p-5 flex flex-col h-full">
-                      <h3 className="text-base font-semibold mb-1">{plan.name}</h3>
-                      <p className="text-xs text-muted-foreground mb-3">{plan.description}</p>
-                      <div className="mb-4">
-                        <span className="text-3xl font-bold">{"\u20B9"}{plan.price}</span>
-                        <span className="text-muted-foreground text-xs ml-1">+ onwards</span>
+                  <div className="rounded-xl p-5 flex flex-col" style={{ background: "var(--pricing-popular-bg)" }}>
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div>
+                        <h3 className="text-base font-semibold text-white">{plan.name}</h3>
+                        <p className="text-xs text-white/60 mt-0.5">{plan.description}</p>
                       </div>
-                      <ul className="space-y-2 mb-4 flex-1">
-                        {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2 text-xs">
-                            <div className="flex items-center justify-center w-4 h-4 rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
-                              <Check className="w-2.5 h-2.5 text-primary" />
-                            </div>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
-                        <Button className="w-full" size="sm" variant="outline" data-testid={`button-pricing-mobile-${plan.name.toLowerCase()}`}>
-                          <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
-                          Get Started
-                        </Button>
-                      </a>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            ))}
-          </div>
+                      <div className="text-right flex-shrink-0">
+                        <span className="text-2xl font-bold text-white">{"\u20B9"}{plan.price}</span>
+                        <span className="text-[10px] ml-0.5 text-white/50">+ onwards</span>
+                      </div>
+                    </div>
+                    <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-4">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-1.5 text-xs text-white/80">
+                          <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-white/70" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
+                      <Button className="w-full bg-white text-primary border-white/80" size="sm" data-testid={`button-pricing-mobile-popular-${plan.name.toLowerCase()}`}>
+                        <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                        Get Started
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <Card data-testid={`card-pricing-${plan.name.toLowerCase()}`}>
+                  <CardContent className="p-5 flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div>
+                        <h3 className="text-base font-semibold">{plan.name}</h3>
+                        <p className="text-xs text-muted-foreground mt-0.5">{plan.description}</p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <span className="text-2xl font-bold">{"\u20B9"}{plan.price}</span>
+                        <span className="text-muted-foreground text-[10px] ml-0.5">+ onwards</span>
+                      </div>
+                    </div>
+                    <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-4">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-1.5 text-xs">
+                          <div className="flex items-center justify-center w-4 h-4 rounded-full bg-primary/10 flex-shrink-0 mt-0.5">
+                            <Check className="w-2.5 h-2.5 text-primary" />
+                          </div>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a href={getPricingWhatsAppLink(plan.name, plan.price)} target="_blank" rel="noopener noreferrer" className="block" data-testid={`link-pricing-mobile-${plan.name.toLowerCase()}`}>
+                      <Button className="w-full" size="sm" variant="outline" data-testid={`button-pricing-mobile-${plan.name.toLowerCase()}`}>
+                        <MessageCircle className="w-3.5 h-3.5 mr-1.5" />
+                        Get Started
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          ))}
         </div>
 
         <motion.div

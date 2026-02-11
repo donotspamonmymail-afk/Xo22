@@ -19,10 +19,10 @@ export function WhatsAppFab() {
         data-testid="link-whatsapp-fab"
       >
         <Button
-          size="lg"
+          size="icon"
           data-testid="button-whatsapp-fab"
           aria-label="Chat on WhatsApp"
-          className="rounded-full"
+          className="rounded-full w-12 h-12 shadow-lg"
         >
           <MessageCircle className="w-5 h-5" />
         </Button>

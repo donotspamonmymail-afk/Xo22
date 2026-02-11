@@ -103,7 +103,7 @@ export function Navbar() {
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex"
+              className="hidden md:inline-flex"
               data-testid="link-nav-whatsapp"
             >
               <Button data-testid="button-nav-whatsapp">
@@ -155,20 +155,6 @@ export function Navbar() {
                 </Button>
               )
             )}
-            <div className="pt-2">
-              <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-                data-testid="link-mobile-whatsapp"
-              >
-                <Button className="w-full" data-testid="button-mobile-whatsapp">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Free Consultation
-                </Button>
-              </a>
-            </div>
           </div>
         </div>
       )}
