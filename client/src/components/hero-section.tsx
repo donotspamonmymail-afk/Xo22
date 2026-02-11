@@ -47,7 +47,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4 sm:mb-8 px-4 py-1.5 text-xs font-medium tracking-wider uppercase" data-testid="badge-hero">
+            <Badge variant="secondary" className="mb-4 sm:mb-8" data-testid="badge-hero">
+              <MapPin className="w-3 h-3 mr-1" />
               {HERO.badge}
             </Badge>
           </motion.div>
