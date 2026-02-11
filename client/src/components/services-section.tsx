@@ -35,27 +35,24 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="sm:hidden grid grid-cols-2 gap-3 pb-4">
+        <div className="sm:hidden grid grid-cols-2 gap-2.5 pb-4">
           {SERVICES.map((service, index) => (
             <Link key={service.slug} href={`/services/${service.slug}`} data-testid={`link-service-mobile-${service.slug}`}>
               <Card className="h-full overflow-visible hover-elevate" data-testid={`card-service-${service.slug}`}>
-                <div className="h-1 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
-                <CardContent className="p-3 flex flex-col h-full">
-                  <div
-                    className="flex items-center justify-center w-9 h-9 rounded-lg mb-2"
-                    style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
-                  >
-                    <service.icon className="w-4 h-4 text-white" />
+                <div className="h-0.5 rounded-t-md" style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }} />
+                <CardContent className="p-3">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div
+                      className="flex items-center justify-center w-7 h-7 rounded-md flex-shrink-0"
+                      style={{ background: ACCENT_GRADIENTS[index % ACCENT_GRADIENTS.length] }}
+                    >
+                      <service.icon className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <h3 className="text-xs font-semibold leading-tight">{service.title}</h3>
                   </div>
-                  <h3 className="text-xs font-semibold mb-1">{service.title}</h3>
-                  <p className="text-[10px] text-muted-foreground leading-snug mb-2 flex-1 line-clamp-2">
-                    {service.description}
-                  </p>
-                  <div className="pt-2 border-t border-border">
-                    <span className="text-[11px] font-medium">
-                      From <span className="text-primary font-bold text-xs">{"\u20B9"}{service.price}</span>
-                    </span>
-                  </div>
+                  <span className="text-[11px] font-medium">
+                    From <span className="text-primary font-bold text-xs">{"\u20B9"}{service.price}</span>
+                  </span>
                 </CardContent>
               </Card>
             </Link>
