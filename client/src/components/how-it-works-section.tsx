@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { ListChecks } from "lucide-react";
 import { motion } from "framer-motion";
 import { staggerContainerSlow, fadeUpItem } from "@/lib/motion";
 import { HOW_IT_WORKS_STEPS } from "@/lib/site-data";
@@ -14,9 +16,10 @@ export function HowItWorksSection() {
     <section id="how-it-works" className="py-14 sm:py-24 md:py-32" data-testid="section-how-it-works" aria-labelledby="how-it-works-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">
+            <ListChecks className="w-3 h-3 mr-1" />
             How It Works
-          </p>
+          </Badge>
           <h2 id="how-it-works-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-how-heading">
             Four Simple Steps
           </h2>

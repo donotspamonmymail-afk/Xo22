@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { MessageCircle, ArrowRight, Layers } from "lucide-react";
 import { getServiceWhatsAppLink } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
@@ -21,9 +22,10 @@ export function ServicesSection() {
     <section id="services" className="py-14 sm:py-24 md:py-32" data-testid="section-services" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">
+            <Layers className="w-3 h-3 mr-1" />
             Our Services
-          </p>
+          </Badge>
           <h2 id="services-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-services-heading">
             Legal Solutions, Simplified
           </h2>

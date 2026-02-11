@@ -1,4 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUpItem } from "@/lib/motion";
 import { WHY_REASONS } from "@/lib/site-data";
@@ -16,9 +18,10 @@ export function WhySection() {
     <section id="why-us" className="py-14 sm:py-24 md:py-32 bg-muted/40" data-testid="section-why-us" aria-labelledby="why-us-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
-          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
+          <Badge variant="secondary" className="mb-3 sm:mb-4">
+            <ShieldCheck className="w-3 h-3 mr-1" />
             Why LegalApex
-          </p>
+          </Badge>
           <h2 id="why-us-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-why-heading">
             Built on Trust, Driven by Results
           </h2>

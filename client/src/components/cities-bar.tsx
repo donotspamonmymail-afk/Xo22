@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { CITIES } from "@/lib/site-data";
@@ -13,11 +14,11 @@ export function CitiesBar() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
-            <MapPin className="w-4 h-4 text-primary" />
-            <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase">
+          <div className="flex items-center justify-center mb-4 sm:mb-6">
+            <Badge variant="secondary">
+              <MapPin className="w-3 h-3 mr-1" />
               Trusted Across India
-            </p>
+            </Badge>
           </div>
           <div className="sm:hidden overflow-x-auto scrollbar-hide -mx-4 px-4">
             <div className="flex items-center gap-x-3" style={{ width: "max-content" }}>

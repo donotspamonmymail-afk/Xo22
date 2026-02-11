@@ -4,6 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { HelpCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { FAQS } from "@/lib/site-data";
 
@@ -13,9 +15,10 @@ export function FaqSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16">
           <div className="lg:w-1/3 text-center lg:text-left lg:sticky lg:top-24 lg:self-start">
-            <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-3 sm:mb-4">
+            <Badge variant="secondary" className="mb-3 sm:mb-4">
+              <HelpCircle className="w-3 h-3 mr-1" />
               FAQ
-            </p>
+            </Badge>
             <h2 id="faq-heading" className="text-2xl sm:text-4xl font-bold tracking-[-0.02em] mb-3 sm:mb-5" data-testid="text-faq-heading">
               Common Questions
             </h2>
