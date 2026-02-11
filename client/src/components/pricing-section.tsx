@@ -43,7 +43,7 @@ export function PricingSection() {
                     data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="px-3 py-0.5 text-[10px] text-white bg-white/20 border-white/30 backdrop-blur-sm">
+                      <Badge className="px-3 py-0.5 text-[10px] text-white bg-primary border-primary shadow-md">
                         <Zap className="w-3 h-3 mr-1" />
                         Most Popular
                       </Badge>
@@ -141,7 +141,7 @@ export function PricingSection() {
                     data-testid={`card-pricing-${plan.name.toLowerCase()}`}
                   >
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <Badge className="px-4 py-1 text-xs text-white bg-white/20 border-white/30 backdrop-blur-sm">
+                      <Badge className="px-4 py-1 text-xs text-white bg-primary border-primary shadow-md">
                         <Zap className="w-3 h-3 mr-1" />
                         Most Popular
                       </Badge>
