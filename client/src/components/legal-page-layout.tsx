@@ -3,11 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { FooterSection } from "@/components/footer-section";
 import { LEGAL_PAGES_CONFIG } from "@/lib/site-data";
 import { motion } from "framer-motion";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { sectionVariants } from "@/lib/motion";
 
 const PAGE_TITLES: Record<keyof typeof LEGAL_PAGES_CONFIG, string> = {
   privacy: "Privacy Policy",
@@ -31,7 +27,7 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="py-20 md:py-28" data-testid={`section-${pageKey}-hero`}>
+      <section className="py-24 md:py-32" data-testid={`section-${pageKey}-hero`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial="hidden"
@@ -40,7 +36,7 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
             variants={sectionVariants}
           >
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4"
               data-testid={`text-${pageKey}-heading`}
             >
               {title}
@@ -55,7 +51,7 @@ export function LegalPageLayout({ pageKey }: LegalPageLayoutProps) {
         </div>
       </section>
 
-      <section className="pb-20 md:pb-28" data-testid={`section-${pageKey}-content`}>
+      <section className="pb-24 md:pb-32" data-testid={`section-${pageKey}-content`}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {config.sections.map((section, index) => (
             <motion.div

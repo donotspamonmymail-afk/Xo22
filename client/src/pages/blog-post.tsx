@@ -8,13 +8,9 @@ import { getServiceWhatsAppLink } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { sectionVariants } from "@/lib/motion";
 import { Clock, Calendar, ChevronRight, ArrowLeft, MessageCircle } from "lucide-react";
 import NotFound from "@/pages/not-found";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -38,7 +34,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <article className="py-20 md:py-28">
+      <article className="py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -84,7 +80,7 @@ export default function BlogPost() {
                 {post.category}
               </Badge>
               <h1
-                className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
+                className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-4"
                 data-testid="text-blog-post-heading"
               >
                 {post.title}

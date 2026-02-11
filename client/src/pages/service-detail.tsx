@@ -16,6 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
+import { sectionVariants } from "@/lib/motion";
 import {
   Check,
   FileText,
@@ -26,11 +27,6 @@ import {
   BookOpen,
 } from "lucide-react";
 import NotFound from "@/pages/not-found";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -59,7 +55,7 @@ export default function ServiceDetail() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="pt-20 pb-16">
+      <main className="pt-24 pb-20">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb">
@@ -91,7 +87,7 @@ export default function ServiceDetail() {
 
         {/* Hero Section */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
@@ -107,7 +103,7 @@ export default function ServiceDetail() {
               )}
               <h1
                 id="service-hero-heading"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-6"
                 data-testid="text-service-hero-title"
               >
                 {detail.heroTitle}
@@ -140,7 +136,7 @@ export default function ServiceDetail() {
 
         {/* What's Included */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -151,7 +147,7 @@ export default function ServiceDetail() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               id="whats-included-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
               data-testid="text-whats-included-heading"
             >
               What's Included
@@ -175,7 +171,7 @@ export default function ServiceDetail() {
 
         {/* Documents Required */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -186,7 +182,7 @@ export default function ServiceDetail() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               id="documents-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
               data-testid="text-documents-heading"
             >
               Documents Required
@@ -208,7 +204,7 @@ export default function ServiceDetail() {
 
         {/* Process Steps */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -220,7 +216,7 @@ export default function ServiceDetail() {
             <div className="flex items-center justify-between gap-4 flex-wrap mb-8">
               <h2
                 id="process-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-tight"
+                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em]"
                 data-testid="text-process-heading"
               >
                 How It Works
@@ -255,7 +251,7 @@ export default function ServiceDetail() {
         {/* FAQ */}
         {detail.faqs.length > 0 && (
           <motion.section
-            className="py-20 md:py-28"
+            className="py-24 md:py-32"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -266,7 +262,7 @@ export default function ServiceDetail() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2
                 id="service-faq-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
                 data-testid="text-service-faq-heading"
               >
                 Frequently Asked Questions
@@ -299,7 +295,7 @@ export default function ServiceDetail() {
         {/* Related Blog Posts */}
         {relatedBlogs.length > 0 && (
           <motion.section
-            className="py-20 md:py-28"
+            className="py-24 md:py-32"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -310,7 +306,7 @@ export default function ServiceDetail() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2
                 id="related-blogs-heading"
-                className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+                className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
                 data-testid="text-related-blogs-heading"
               >
                 Related Articles
@@ -348,7 +344,7 @@ export default function ServiceDetail() {
 
         {/* CTA Section */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -358,7 +354,7 @@ export default function ServiceDetail() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Card data-testid="card-service-cta">
               <CardContent className="p-8 md:p-12 text-center">
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" data-testid="text-service-cta-heading">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4" data-testid="text-service-cta-heading">
                   Ready to Get Started with {serviceConfig.title}?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">

@@ -4,7 +4,7 @@ import { CITIES } from "@/lib/site-data";
 
 export function CitiesBar() {
   return (
-    <section className="py-12 md:py-16 bg-muted/30" data-testid="section-cities" aria-label="Trusted across India">
+    <section className="py-14 md:py-20 bg-muted/40" data-testid="section-cities" aria-label="Trusted across India">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

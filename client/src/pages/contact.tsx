@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { sectionVariants, staggerContainer, fadeUpItem } from "@/lib/motion";
 import {
   MessageCircle,
   Mail,
@@ -16,25 +17,6 @@ import {
   Zap,
   ArrowRight,
 } from "lucide-react";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
 
 export default function Contact() {
   useEffect(() => {
@@ -47,10 +29,10 @@ export default function Contact() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="pt-20 pb-16">
+      <main className="pt-24 pb-20">
         {/* Hero */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
@@ -61,7 +43,7 @@ export default function Contact() {
             <div className="max-w-3xl">
               <h1
                 id="contact-hero-heading"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-6"
                 data-testid="text-contact-hero-title"
               >
                 {config.heroTitle}
@@ -78,7 +60,7 @@ export default function Contact() {
 
         {/* Contact Methods */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -89,7 +71,7 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               id="contact-methods-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
               data-testid="text-contact-methods-heading"
             >
               Reach Out to Us
@@ -172,7 +154,7 @@ export default function Contact() {
 
         {/* Office Hours & Response Time */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -217,7 +199,7 @@ export default function Contact() {
 
         {/* Quick Service Selection */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -228,7 +210,7 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               id="quick-services-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-3"
+              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-3"
               data-testid="text-quick-services-heading"
             >
               Need Help With a Specific Service?
@@ -237,14 +219,14 @@ export default function Contact() {
               Select a service below to start a conversation with our expert on WhatsApp.
             </p>
             <motion.div
-              variants={containerVariants}
+              variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
             >
               {SERVICES.map((service) => (
-                <motion.div key={service.slug} variants={itemVariants}>
+                <motion.div key={service.slug} variants={fadeUpItem}>
                   <a
                     href={getServiceWhatsAppLink(service.title, service.price)}
                     target="_blank"

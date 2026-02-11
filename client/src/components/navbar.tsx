@@ -55,7 +55,7 @@ export function Navbar() {
             <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary">
               <Scale className="w-4 h-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold tracking-tight">
+            <span className="text-lg font-bold tracking-[-0.02em]">
               Legal<span className="text-primary">Apex</span>
             </span>
           </Link>

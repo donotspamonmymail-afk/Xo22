@@ -6,12 +6,8 @@ import { BLOG_POSTS_CONFIG } from "@/lib/site-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { sectionVariants } from "@/lib/motion";
 import { Clock, Calendar, ArrowRight } from "lucide-react";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function BlogIndex() {
   useEffect(() => {
@@ -22,7 +18,7 @@ export default function BlogIndex() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="py-20 md:py-28" data-testid="section-blog-hero">
+      <section className="py-24 md:py-32" data-testid="section-blog-hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial="hidden"
@@ -31,7 +27,7 @@ export default function BlogIndex() {
             variants={sectionVariants}
           >
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4"
               data-testid="text-blog-heading"
             >
               Legal Insights & Guides
@@ -48,7 +44,7 @@ export default function BlogIndex() {
         </div>
       </section>
 
-      <section className="pb-20 md:pb-28" data-testid="section-blog-grid">
+      <section className="pb-24 md:pb-32" data-testid="section-blog-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {BLOG_POSTS_CONFIG.map((post, index) => (

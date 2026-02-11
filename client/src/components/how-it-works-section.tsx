@@ -1,29 +1,16 @@
 import { motion } from "framer-motion";
+import { staggerContainerSlow, fadeUpItem } from "@/lib/motion";
 import { HOW_IT_WORKS_STEPS } from "@/lib/site-data";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-20 md:py-28" data-testid="section-how-it-works" aria-labelledby="how-it-works-heading">
+    <section id="how-it-works" className="py-24 md:py-32" data-testid="section-how-it-works" aria-labelledby="how-it-works-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-sm font-semibold text-primary tracking-wide uppercase mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-xs font-semibold text-primary tracking-[0.15em] uppercase mb-4">
             How It Works
           </p>
-          <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" data-testid="text-how-heading">
+          <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-5" data-testid="text-how-heading">
             Four Simple Steps
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed">
@@ -32,7 +19,7 @@ export function HowItWorksSection() {
         </div>
 
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerSlow}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -41,7 +28,7 @@ export function HowItWorksSection() {
           {HOW_IT_WORKS_STEPS.map((step, index) => (
             <motion.div
               key={step.number}
-              variants={itemVariants}
+              variants={fadeUpItem}
               className="relative text-center"
               data-testid={`step-${step.number}`}
             >

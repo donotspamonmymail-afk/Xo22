@@ -6,6 +6,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { sectionVariants } from "@/lib/motion";
 import {
   MessageCircle,
   Target,
@@ -14,11 +15,6 @@ import {
   Heart,
   Users,
 } from "lucide-react";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const valueIcons = [Eye, Target, ShieldCheck, Heart];
 
@@ -33,10 +29,10 @@ export default function About() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="pt-20 pb-16">
+      <main className="pt-24 pb-20">
         {/* Hero */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
@@ -47,7 +43,7 @@ export default function About() {
             <div className="max-w-3xl">
               <h1
                 id="about-hero-heading"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-6"
                 data-testid="text-about-hero-title"
               >
                 {config.heroTitle}
@@ -64,7 +60,7 @@ export default function About() {
 
         {/* Mission */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -77,7 +73,7 @@ export default function About() {
               <CardContent className="p-8 md:p-12">
                 <h2
                   id="mission-heading"
-                  className="text-2xl sm:text-3xl font-bold tracking-tight mb-6"
+                  className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-6"
                   data-testid="text-mission-heading"
                 >
                   Our Mission
@@ -95,7 +91,7 @@ export default function About() {
 
         {/* Values */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -106,7 +102,7 @@ export default function About() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2
               id="values-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-8"
+              className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-8"
               data-testid="text-values-heading"
             >
               Our Values
@@ -136,7 +132,7 @@ export default function About() {
 
         {/* Team */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -152,7 +148,7 @@ export default function About() {
                 </div>
                 <h2
                   id="team-heading"
-                  className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
+                  className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4"
                   data-testid="text-team-heading"
                 >
                   {config.team.title}
@@ -170,7 +166,7 @@ export default function About() {
 
         {/* CTA */}
         <motion.section
-          className="py-20 md:py-28"
+          className="py-24 md:py-32"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -180,7 +176,7 @@ export default function About() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Card data-testid="card-about-cta">
               <CardContent className="p-8 md:p-12 text-center">
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" data-testid="text-about-cta-heading">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-4" data-testid="text-about-cta-heading">
                   Ready to Get Started?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
