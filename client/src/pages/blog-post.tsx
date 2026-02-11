@@ -44,7 +44,14 @@ export default function BlogPost() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div className="relative py-16 md:py-24 bg-muted/50">
+        <div
+          className="relative py-16 md:py-24 overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a5f)" }}
+        >
+          <div className="absolute inset-0" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.4), transparent)" }} />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-15" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.3), transparent)" }} />
+          </div>
           <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -52,13 +59,13 @@ export default function BlogPost() {
               variants={sectionVariants}
             >
               <nav
-                className="flex items-center gap-1.5 text-sm mb-6 flex-wrap text-muted-foreground"
+                className="flex items-center gap-1.5 text-sm mb-6 flex-wrap text-white/60"
                 aria-label="Breadcrumb"
                 data-testid="nav-breadcrumb"
               >
                 <Link
                   href="/"
-                  className="hover:text-foreground transition-colors"
+                  className="hover:text-white transition-colors"
                   data-testid="link-breadcrumb-home"
                 >
                   Home
@@ -66,14 +73,14 @@ export default function BlogPost() {
                 <ChevronRight className="w-3 h-3" />
                 <Link
                   href="/blog"
-                  className="hover:text-foreground transition-colors"
+                  className="hover:text-white transition-colors"
                   data-testid="link-breadcrumb-blog"
                 >
                   Blog
                 </Link>
                 <ChevronRight className="w-3 h-3" />
                 <span
-                  className="text-foreground truncate max-w-xs font-medium"
+                  className="text-white truncate max-w-xs font-medium"
                   data-testid="text-breadcrumb-current"
                 >
                   {post.title}
@@ -83,18 +90,18 @@ export default function BlogPost() {
               <div>
                 <Badge
                   variant="secondary"
-                  className="mb-4 text-xs"
+                  className="mb-4 text-xs bg-white/10 text-white/90 border-white/20"
                   data-testid="badge-post-category"
                 >
                   {post.category}
                 </Badge>
                 <h1
-                  className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-4"
+                  className="text-3xl sm:text-4xl font-bold tracking-[-0.02em] mb-4 text-white"
                   data-testid="text-blog-post-heading"
                 >
                   {post.title}
                 </h1>
-                <div className="flex items-center gap-4 text-sm flex-wrap text-muted-foreground">
+                <div className="flex items-center gap-4 text-sm flex-wrap text-white/60">
                   <span
                     className="flex items-center gap-1"
                     data-testid="text-post-readtime"

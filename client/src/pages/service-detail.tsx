@@ -61,24 +61,31 @@ export default function ServiceDetail() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div className="relative py-16 md:py-24 bg-muted/50">
+        <div
+          className="relative py-16 md:py-24 overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a5f)" }}
+        >
+          <div className="absolute inset-0" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.4), transparent)" }} />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-15" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.3), transparent)" }} />
+          </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav aria-label="Breadcrumb" data-testid="nav-breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-1.5 text-sm flex-wrap text-muted-foreground">
+              <ol className="flex items-center gap-1.5 text-sm flex-wrap text-white/60">
                 <li>
-                  <Link href="/" className="hover:text-foreground transition-colors" data-testid="link-breadcrumb-home">
+                  <Link href="/" className="hover:text-white transition-colors" data-testid="link-breadcrumb-home">
                     Home
                   </Link>
                 </li>
                 <li><ChevronRight className="w-3 h-3" /></li>
                 <li>
-                  <Link href="/#services" className="hover:text-foreground transition-colors" data-testid="link-breadcrumb-services">
+                  <Link href="/#services" className="hover:text-white transition-colors" data-testid="link-breadcrumb-services">
                     Services
                   </Link>
                 </li>
                 <li><ChevronRight className="w-3 h-3" /></li>
                 <li>
-                  <span className="text-foreground font-medium" data-testid="text-breadcrumb-current">
+                  <span className="text-white font-medium" data-testid="text-breadcrumb-current">
                     {serviceConfig.title}
                   </span>
                 </li>
@@ -94,34 +101,31 @@ export default function ServiceDetail() {
             >
               {ServiceIcon && (
                 <div
-                  className="flex items-center justify-center w-12 h-12 rounded-lg mb-5"
-                  style={{
-                    background: "var(--gradient-1)",
-                  }}
+                  className="flex items-center justify-center w-12 h-12 rounded-lg mb-5 bg-white/10 border border-white/20"
                 >
                   <ServiceIcon className="w-6 h-6 text-white" />
                 </div>
               )}
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
                 data-testid="text-service-hero-title"
               >
                 {detail.heroTitle}
               </h1>
               <p
-                className="text-base sm:text-lg leading-relaxed mb-6 text-muted-foreground"
+                className="text-base sm:text-lg leading-relaxed mb-6 text-white/70"
                 data-testid="text-service-hero-description"
               >
                 {detail.heroDescription}
               </p>
               <div className="flex items-center gap-4 flex-wrap">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl font-bold" data-testid="text-service-price">
+                  <span className="text-2xl font-bold text-white" data-testid="text-service-price">
                     {"\u20B9"}{serviceConfig.price}
                   </span>
-                  <span className="text-sm text-muted-foreground">onwards</span>
+                  <span className="text-sm text-white/60">onwards</span>
                 </div>
-                <Badge variant="secondary" className="text-xs">
+                <Badge variant="secondary" className="text-xs bg-white/10 text-white/90 border-white/20">
                   <Clock className="w-3 h-3 mr-1" />
                   {detail.timeline}
                 </Badge>

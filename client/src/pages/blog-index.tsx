@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { sectionVariants, staggerContainer, fadeUpItem } from "@/lib/motion";
-import { Clock, Calendar, ArrowRight } from "lucide-react";
+import { Clock, Calendar, ArrowRight, BookOpen } from "lucide-react";
 
 export default function BlogIndex() {
   useEffect(() => {
@@ -19,7 +19,14 @@ export default function BlogIndex() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div className="relative py-20 md:py-28 bg-muted/50">
+        <div
+          className="relative py-20 md:py-28 overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a5f)" }}
+        >
+          <div className="absolute inset-0" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.4), transparent)" }} />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-15" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.3), transparent)" }} />
+          </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial="hidden"
@@ -28,18 +35,19 @@ export default function BlogIndex() {
             >
               <Badge
                 variant="secondary"
-                className="mb-5 px-3 py-1 text-xs"
+                className="mb-5 px-3 py-1 text-xs bg-white/10 text-white/90 border-white/20"
               >
+                <BookOpen className="w-3 h-3 mr-1.5" />
                 LegalApex Blog
               </Badge>
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
                 data-testid="text-blog-heading"
               >
                 Legal Insights & Guides
               </h1>
               <p
-                className="text-base sm:text-lg max-w-2xl mx-auto text-muted-foreground"
+                className="text-base sm:text-lg max-w-2xl mx-auto text-white/70"
                 data-testid="text-blog-description"
               >
                 Helpful guides and expert insights on Indian legal services —

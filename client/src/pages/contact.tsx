@@ -5,6 +5,7 @@ import { CONTACT_PAGE_CONFIG, SERVICES } from "@/lib/site-data";
 import { SITE_CONFIG } from "@shared/site-config";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { sectionVariants, staggerContainer, fadeUpItem } from "@/lib/motion";
@@ -57,7 +58,14 @@ export default function Contact() {
       <Navbar />
 
       <main className="pt-20 pb-20">
-        <div className="relative py-20 md:py-28 bg-muted/50">
+        <div
+          className="relative py-20 md:py-28 overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #1e1b4b, #312e81, #1e3a5f)" }}
+        >
+          <div className="absolute inset-0" aria-hidden="true">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, rgba(99,102,241,0.4), transparent)" }} />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-15" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.3), transparent)" }} />
+          </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -65,14 +73,18 @@ export default function Contact() {
               variants={sectionVariants}
               className="max-w-2xl"
             >
+              <Badge variant="secondary" className="mb-5 px-3 py-1 text-xs bg-white/10 text-white/90 border-white/20">
+                <MessageCircle className="w-3 h-3 mr-1.5" />
+                Contact Us
+              </Badge>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.02em] mb-4 text-white"
                 data-testid="text-contact-hero-title"
               >
                 {config.heroTitle}
               </h1>
               <p
-                className="text-base sm:text-lg leading-relaxed text-muted-foreground"
+                className="text-base sm:text-lg leading-relaxed text-white/70"
                 data-testid="text-contact-hero-description"
               >
                 {config.heroDescription}
@@ -429,6 +441,10 @@ export default function Contact() {
           aria-labelledby="quick-services-heading"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Badge variant="secondary" className="mb-4">
+              <Zap className="w-3 h-3 mr-1.5" />
+              Quick Access
+            </Badge>
             <h2
               id="quick-services-heading"
               className="text-2xl sm:text-3xl font-bold tracking-[-0.02em] mb-3"
